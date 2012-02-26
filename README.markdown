@@ -13,6 +13,15 @@ Switch to the `~/.vim` directory, and fetch submodules:
     git submodule init
     git submodule update
 
+Upgrading individual plugins:
+
+    cd ~/.vim/bundle/someplugin
+    git pull origin master
+
+Upgrading all plugins:
+
+    git submodule foreach git pull origin master
+
 See [vimcasts][] for more info.
 
 [vimcasts]: http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
