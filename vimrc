@@ -1,4 +1,4 @@
-call pathogen#infect()
+call pathogen#runtime_append_all_bundles()
 
 syntax enable
 set background=dark
