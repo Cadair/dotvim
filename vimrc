@@ -3,6 +3,8 @@ call pathogen#helptags()
 
 syntax enable
 set background=dark
+"change the leader to a ,
+let mapleader = ","
 
 "Stuff to make python look nice
 set tabstop=4
@@ -22,7 +24,24 @@ filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 
+"break vi compatibility to allow lots of features.
 set nocompatible
+"don't create a backup file
+set nobackup
+"hide buffers rather than closing them
+set hidden
+
+"don't wrap lines
+set nowrap
+"toggle line numbers
+nnoremap <leader>n :set invnumber<CR>
+
+"enable paste mode, so that pasted text doesn't have cascading indentation
+set pastetoggle=<F2>
+
+"formatting of text. place cursor in paragraph or visually select.
+vmap Q gq
+nmap Q gqap
 
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
@@ -43,8 +62,6 @@ noremap   <Right>  <NOP>
 set encoding=utf-8
 set ruler
 
-"change the leader to a ,
-let mapleader = ","
 "open and switch to new window
 nnoremap <leader>w <C-w>v<C-w>l
 
@@ -73,8 +90,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-"quick editing of .vimrc
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+"quick editing and reloading of .vimrc
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "quickly select just pasted text
 nnoremap <leader>v V`]
