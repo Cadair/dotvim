@@ -36,13 +36,6 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-"ropevim
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-
-"ack
-nmap <leader>a <Esc>:Ack!
-
 "Stuff to make python look nice
 set tabstop=4
 set shiftwidth=4
