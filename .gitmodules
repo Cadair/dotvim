@@ -18,3 +18,12 @@
 	path = bundle/pep8
 	url = http://git@github.com/vim-scripts/pep8
     ignore= dirty
+[submodule "bundle/tasklist"]
+	path = bundle/tasklist
+	url = http://github.com/vim-scripts/TaskList.vim.git
+[submodule "bundle/pyflakes"]
+	path = bundle/pyflakes
+	url = http://github.com/mitechie/pyflakes-pathogen.git
+[submodule "bundle/pydoc"]
+	path = bundle/pydoc
+	url = http://github.com/fs111/pydoc.vim.git
