@@ -19,6 +19,13 @@ syntax on
 filetype on
 filetype plugin indent on
 
+" see http://sontek.net/turning-vim-into-a-modern-python-ide
+"FOLDING
+set foldmethod=indent
+set foldlevel=99
+"TASKLIST
+map <leader>td <Plug>TaskList
+
 "pyflakes
 "FIXME: Is pyflakes actually doing anything???
 let g:pyflakes_use_quickfix = 0
@@ -28,6 +35,13 @@ let g:pyflakes_use_quickfix = 0
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+
+"ropevim
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+"ack
+nmap <leader>a <Esc>:Ack!
 
 "Stuff to make python look nice
 set tabstop=4
@@ -39,13 +53,6 @@ set expandtab
 set softtabstop=4
 "new line has the same indentation as previous line
 set autoindent
-
-" see http://sontek.net/turning-vim-into-a-modern-python-ide
-"FOLDING
-set foldmethod=indent
-set foldlevel=99
-"TASKLIST
-map <leader>td <Plug>TaskList
 
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
