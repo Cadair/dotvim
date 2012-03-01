@@ -26,10 +26,6 @@ set foldlevel=99
 "TASKLIST
 map <leader>td <Plug>TaskList
 
-"pyflakes
-"FIXME: Is pyflakes actually doing anything???
-let g:pyflakes_use_quickfix = 0
-
 "tab completion and python documentation
 "hit <leader>pw for pydoc on a function
 au FileType python set omnifunc=pythoncomplete#Complete

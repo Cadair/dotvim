@@ -22,10 +22,6 @@
 	path = bundle/tasklist
 	url = http://github.com/vim-scripts/TaskList.vim.git
     ignore = dirty
-[submodule "bundle/pyflakes"]
-	path = bundle/pyflakes
-	url = http://github.com/mitechie/pyflakes-pathogen.git
-    ignore = dirty
 [submodule "bundle/pydoc"]
 	path = bundle/pydoc
 	url = http://github.com/fs111/pydoc.vim.git
@@ -33,4 +29,8 @@
 [submodule "bundle/minibufexpl"]
 	path = bundle/minibufexpl
 	url = http://github.com/sontek/minibufexpl.vim.git
+    ignore = dirty
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = http://github.com/scrooloose/syntastic.git
     ignore = dirty
