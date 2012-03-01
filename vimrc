@@ -129,7 +129,7 @@ nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " NERD Tree
 noremap <F9> :NERDTreeToggle<CR>
-inoremap <F9> <esc> :NERDTreeToggle<CR>
+inoremap <F9> <esc>:NERDTreeToggle<CR>
 
 au Filetype nerdtree setlocal nolist
 
@@ -140,3 +140,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " /NERDTree
 
+"Markdown
+"Add headings
+nnoremap <buffer> <leader>1 yypVr=
+nnoremap <buffer> <leader>2 yypVr-
+nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>

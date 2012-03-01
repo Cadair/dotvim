@@ -1,4 +1,5 @@
 Installation:
+=============
 
     git clone git://bitbucket.org/aaaren/dotvim.git ~/.vim
 
