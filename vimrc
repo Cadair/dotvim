@@ -106,8 +106,22 @@ nnoremap <leader>v V`]
 let g:pep8_map='<leader>8'
 
 " http://vim.wikia.com/wiki/Quickly_adding_and_deleting_empty_lines 
-" " Ctrl-j/k deletes blank line below/above, and Up/Down inserts. 
-nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR> 
-nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR> 
+" Ctrl-Down/Up deletes blank line below/above, and Up/Down inserts. 
+nnoremap <silent><C-Down> m`:silent +g/\m^\s*$/d<CR>``:noh<CR> 
+nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR> 
 nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR> 
 nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR> 
+
+" NERD Tree
+noremap <F9> :NERDTreeToggle<CR>
+inoremap <F9> <esc> :NERDTreeToggle<CR>
+
+au Filetype nerdtree setlocal nolist
+
+let NERDTreeHighlightCursorline = 1
+let NERDTreeIgnore = []
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" /NERDTree
+
