@@ -38,3 +38,6 @@
 	path = bundle/syntastic
 	url = http://github.com/scrooloose/syntastic.git
     ignore = dirty
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
