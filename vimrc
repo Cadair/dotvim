@@ -1,10 +1,40 @@
+"pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-syntax enable
+"basic stuff
 set background=dark
+"break vi compatibility to allow lots of features.
+set nocompatible
+"don't create a backup file
+set nobackup
+"hide buffers rather than closing them
+set hidden
 "change the leader to a ,
 let mapleader = ","
+set grepprg=grep\ -nH\ $*
+
+"SYNTAX
+syntax on
+filetype on
+filetype plugin indent on
+
+" see http://sontek.net/turning-vim-into-a-modern-python-ide
+"FOLDING
+set foldmethod=indent
+set foldlevel=99
+"TASKLIST
+map <leader>td <Plug>TaskList
+
+"pyflakes
+"FIXME: Is pyflakes actually doing anything???
+let g:pyflakes_use_quickfix = 0
+
+"tab completion and python documentation
+"hit <leader>pw for pydoc on a function
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
 
 "Stuff to make python look nice
 set tabstop=4
@@ -17,19 +47,8 @@ set softtabstop=4
 "new line has the same indentation as previous line
 set autoindent
 
-
-filetype plugin on
-set grepprg=grep\ -nH\ $*
-filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
-
-"break vi compatibility to allow lots of features.
-set nocompatible
-"don't create a backup file
-set nobackup
-"hide buffers rather than closing them
-set hidden
 
 "don't wrap lines
 set nowrap
