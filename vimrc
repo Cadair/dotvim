@@ -3,7 +3,6 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 "basic stuff
-set background=dark
 "break vi compatibility to allow lots of features.
 set nocompatible
 "don't create a backup file
@@ -26,6 +25,8 @@ set noswapfile                    " It's 2012, Vim.
 syntax on
 filetype on
 filetype plugin indent on
+
+set background=dark
 
 set encoding=utf-8
 set ruler
