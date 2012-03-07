@@ -204,7 +204,10 @@ nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
 "Ctrl-P
 " need to ignore .git here rather than in wildignore or 
 " fugitive breaks.
-let g:ctrlp_custom_ignore = '\.git$'
+" let g:ctrlp_custom_ignore = '\.git$'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+
 
 "Wildmenu
 "This is for command completion and alternative display
@@ -212,7 +215,7 @@ set wildmenu
 set wildmode=longest:full
 
 " don't ignore git here or fugitive breaks
-set wildignore+=*/.hg/*,*/.svn*,
+" set wildignore+=*/.hg/*,*/.svn*,
 set wildignore+=*.aux,*.out,*.toc                " Latex intermediatries
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
