@@ -1,0 +1,6 @@
+#!/bin/bash
+
+web_dir="/home/eeaol/web"
+cd $web_dir
+poole --build --base-url="${web_dir}/output" --md-ext='codehilite'
+cd -

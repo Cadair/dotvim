@@ -1,0 +1,10 @@
+#!/bin/bash
+
+notes_dir="/home/eeaol/private_html/notes"
+for file in `ls $notes_dir | sed -e '/\./D'`; do
+    line="[$file]($file)  "
+    echo "$line \n" >> $notes_dir/index.text
+done
+
+multimarkdown $notes_dir/index.text > $notes_dir/index.html
+

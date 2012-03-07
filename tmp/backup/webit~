@@ -1,0 +1,33 @@
+#!/bin/bash
+
+add_header(){
+    # Arguments: header_file, main_file, out_file
+    # Output: Creates an out_file that is formed from the
+    #       header_file and main_file
+    header_file=$1
+    main_file=$2
+    out_file=$3
+
+    cat $header_file > tmpf
+    cat $main_file >> tmpf
+    cp tmpf $out_file
+    rm -f tmpf
+}
+
+gen_web_content(){
+    user_dir="/home/eeaol"
+    content_dir="$user_dir/writing/notes"
+    out_dir="$user_dir/writing/webify"
+
+    for file in `ls $content_dir`; do
+        main_file=$content_dir/$file
+        header_file="$out_dir/header-html"
+        outfile="$out_dir/html/$file"
+
+        add_header $header_file $main_file $outfile.text
+        multimarkdown $outfile.text > $outfile.html
+        ln -s $outfile.html $outfile
+    done
+}
+
+gen_web_content

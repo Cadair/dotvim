@@ -3,7 +3,6 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 "basic stuff
-set background=dark
 "break vi compatibility to allow lots of features.
 set nocompatible
 "don't create a backup file
@@ -27,6 +26,11 @@ syntax on
 filetype on
 filetype plugin indent on
 
+set background=dark
+" 256 colour
+set t_Co=256
+color zenburn
+
 set encoding=utf-8
 set ruler
 set cursorline
@@ -40,6 +44,17 @@ set modelines=0
 set history=1000
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮
+
+set laststatus=2
+set statusline=
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+" fugitive
+" set statusline+=%{fugitive#statusline()}  
+" syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
 
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
@@ -187,6 +202,9 @@ nnoremap <buffer> <leader>2 yypVr-
 nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
 
 "Ctrl-P
+" need to ignore .git here rather than in wildignore or 
+" fugitive breaks.
+let g:ctrlp_custom_ignore = '\.git$'
 
 
 "Wildmenu
@@ -194,7 +212,8 @@ nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
 set wildmenu
 set wildmode=longest:full
 
-set wildignore+=*/.git*,*/.hg/*,*/.svn*,
+" don't ignore git here or fugitive breaks
+set wildignore+=*/.hg/*,*/.svn*,
 set wildignore+=*.aux,*.out,*.toc                " Latex intermediatries
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files

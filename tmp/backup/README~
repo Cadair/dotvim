@@ -1,0 +1,41 @@
+AOL 05/03/2012
+
+There are two gif animations with both of the cameras, one higher
+quality (much better).
+
+    + anim_11_7_06c_hi.gif
+    + anim_11_7_06c_low,gif
+
+There are also gif animations for the individual cameras (both 2000px).
+
+    + anim_11_7_06c_cam1.gif
+    + anim_11_7_06c_cam2.gif
+
+The source.tar.gz archive contains
+    
+    + the script used to convert to gif and make the animations
+    + the original single camera images in cam1/ and cam2/
+    + joined up images in presentation/
+    
+The top of the animations contains text with the run parameters.
+
+    + h_1 is the fractional interface depth
+    + rho_0 is the relative density of the current
+    + rho_1 is the relative density of the lower layer
+    + rho_0 (typo! should be rho_2) is the relative density of the 
+      upper layer which is 1 as it's water anyway.
+    + alpha = (rho_0 - rho_1) / (rho_1 - rho_2) is the parameter that
+      I vary. Call it the buoyancy ratio.
+    + D is the fractional initial depth of the current. There are runs
+      with this equal to 1 as well.
+
+Roughly, a difference in density of 0.10 corresponds to a 10K potential
+temperature (virtual, strictly) difference in the atmosphere.
+
+There is parallax in the images, but this is corrected for in post-processing.
+
+This work differs from e.g. Tan et al (2010) in that it looks in
+depth at subscritical behaviour (like the example run here).
+
+Rottman and Simpson (1989) considered a two layer system with a very
+shallow lower layer, more like a nocturnal / marine inversion.

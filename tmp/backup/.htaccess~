@@ -1,0 +1,174 @@
+#	.htaccess file for MultiMarkdown based CMS
+#
+#	Copyright (c) 2010 by Fletcher T. Penney
+#
+#	<http://fletcherpenney.net/>
+#
+#
+# Copyright (C) 2010  Fletcher T. Penney <fletcher@fletcherpenney.net>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+#    Free Software Foundation, Inc.
+#    59 Temple Place, Suite 330
+#    Boston, MA 02111-1307 USA
+#
+#
+
+
+# Customizable Settings
+
+SetEnv	TZ	US/Eastern
+
+
+# Keep this to establish default base of / in all other hosts
+RewriteCond %{HTTP_HOST} .*
+RewriteRule .* - [E=Base_URL:]
+
+
+# Force trailing slash for directories
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*[^/]+)$  /$1/   [R]
+
+
+# If your MMD-CMS site is not a "root-level" site, you need to use the 
+# following pattern to establish a top-level URL
+#
+# for example, if you reach your site at http://mymachine.local/~user/mmd-cms
+# then you would enter the following lines:
+#
+#	RewriteCond %{HTTP_HOST}  homepages.see.leeds.ac.ukk
+#	RewriteRule .* - [E=Base_URL:/~ueeaol/mmd-static/mmd-cms] 
+#
+# If you use the same folders at multiple URL's, you can repeat this pattern.
+#
+# If your site is at http://mymachine.local/, then you do not need to use this 
+# pattern
+
+# RewriteCond %{HTTP_HOST} mymachine.local
+# RewriteRule .* - [E=Base_URL:/~user/mmd-cms] 
+
+
+# Now, you can customize the URL to the notfound.html file, e.g.
+# ErrorDocument 404 /~user/mmd-cms/notfound.html
+#
+# Unfortunately, I haven't found a way to do this on a host by host basis
+
+ErrorDocument 404 /notfound.html
+
+
+# General Settings
+
+Options +Includes +FollowSymLinks +ExecCGI +Indexes
+XBitHack Full
+
+# AddCharset UTF-8 .html
+
+AddHandler server-parsed .html
+AddHandler cgi-script .cgi
+
+# What files should we use to index directories?
+
+DirectoryIndex index index.xhtml index.html
+
+
+
+# Pass requests for atom.xml to the script
+
+RewriteCond %{REQUEST_FILENAME} /atom.xml
+RewriteRule ^(.*)$ %{ENV:Base_URL}/cgi/atom.cgi [L,QSA,T=application/xml;charset=UTF-8]
+
+RewriteCond %{REQUEST_URI} %{ENV:Base_URL}/cgi/atom.cgi
+RewriteRule .* - [T=application/xml;charset=UTF-8]
+
+
+# Ditto for atom-comments.xml
+
+RewriteCond %{REQUEST_FILENAME} /atom-comments.xml
+RewriteRule ^(.*)$ %{ENV:Base_URL}/cgi/atom-comments.cgi [L,QSA,T=application/xml;charset=UTF-8]
+
+RewriteCond %{REQUEST_URI} /cgi/atom-comments.cgi
+RewriteRule .* - [T=application/xml;charset=UTF-8]
+
+
+# Google Sitemap to allow better indexing
+# Add /sitemap.xml to your google webmaster tools
+# https://www.google.com/webmasters/tools/sitemap-list
+
+RewriteCond %{REQUEST_FILENAME} /sitemap.xml
+RewriteRule ^(.*)$ %{ENV:Base_URL}/cgi/google_sitemap.cgi [L,QSA,T=application/xml;charset=UTF-8]
+
+RewriteCond %{REQUEST_URI} /cgi/google_sitemap.cgi
+RewriteRule .* - [T=application/xml;charset=UTF-8]
+
+
+# Archives template
+# URLS that look like /YYYY/ or /YYYY/MM/ are passed to archives.html
+
+RewriteCond %{REQUEST_URI} /[0-9][0-9][0-9][0-9](/[0-9][0-9])?//?index.html$
+RewriteRule ^(.*)$ %{ENV:Base_URL}/templates/archives.html
+
+RewriteCond %{REQUEST_URI} /archives\/?$
+RewriteRule ^(.*)$ %{ENV:Base_URL}/templates/archives.html
+
+
+# TagMap
+RewriteCond %{REQUEST_URI} /tags\/?$
+RewriteRule ^(.*)$ %{ENV:Base_URL}/templates/tagmap.html [L,QSA]
+
+# Tag Search
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} /tags\/.+$
+RewriteRule ^\/?tags\/?(.*)$ %{ENV:Base_URL}/templates/tags.html?query=$1 [L,QSA]
+
+
+# Local Site Search
+RewriteCond %{REQUEST_URI} /search
+RewriteRule ^\/?search\/?(.*)$ %{ENV:Base_URL}/templates/search.html$1 [L,QSA]
+
+
+
+# Pass requests to proper files
+RewriteEngine on
+
+# If the .html file exists, use it
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L,QSA]
+
+# If the directory exists, use the index.html for that directory
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*?)/?$ %{ENV:Base_URL}/$1/index.html [L,QSA]
+
+
+
+# FINALLY!!!!
+#	Send proper mime type for XHTML!!!
+# 
+# Thanks to:
+# http://bitworking.org/news/134/Content-Negotiation-Considered-Harmful-Again
+#
+# To serve your website in HTML instead of XHTML, comment out or delete the 
+# following lines.  FYI - MathML will not work properly in HTML, but
+# everything else should.
+
+# RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml
+# RewriteCond %{HTTP_ACCEPT} !application/xhtml\+xml\s*;\s*q=0\.?0*(\s|,|$)
+# RewriteCond %{REQUEST_URI} !(notfound.html|test.html)$
+# RewriteCond %{REQUEST_URI} \.html$
+# RewriteRule .* - [T=application/xhtml+xml;charset=UTF-8]
+# RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml
+# RewriteCond %{HTTP_ACCEPT} !application/xhtml\+xml\s*;\s*q=0\.?0*(\s|,|$)
+# RewriteCond %{REQUEST_URI} !(notfound.html|test.html)$
+# RewriteCond %{REQUEST_URI} !\.
+# RewriteRule .* - [T=application/xhtml+xml;charset=UTF-8]
