@@ -39,17 +39,17 @@ set backspace=indent,eol,start
 set autoread
 set autowrite
 set shiftround
-set showbreak=↪
+" set showbreak=↪
 set modelines=0
 set history=1000
-set list
+" set list
 " set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 set laststatus=2
 set statusline=
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 " fugitive
-" set statusline+=%{fugitive#statusline()}  
+set statusline+=%{fugitive#statusline()}  
 " syntastic
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}

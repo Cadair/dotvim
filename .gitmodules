@@ -26,10 +26,6 @@
 	path = bundle/pydoc
 	url = http://github.com/fs111/pydoc.vim.git
     ignore = dirty
-[submodule "bundle/minibufexpl"]
-	path = bundle/minibufexpl
-	url = http://github.com/sontek/minibufexpl.vim.git
-    ignore = dirty
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = http://github.com/scrooloose/syntastic.git
