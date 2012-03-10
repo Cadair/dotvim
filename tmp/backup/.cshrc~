@@ -48,7 +48,7 @@ app setup jabref
                       set path = ($LEM/LEMSUB/bin $path)
 
 set path = (~/bin $path)
-set path = (~/.local $path)
+set path = (~/.local/bin $path)
 
 ## alias
 source ~/.csh_aliases

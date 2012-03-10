@@ -23,9 +23,9 @@ it isn't especially efficient.
 
 A bit more searching and I came across [Poole], which says
 
-    Poole may be a good choice if you are familiar with Markdown and Python
-    and if you want to build a rather simple site with only a spot of
-    generated content.
+>   Poole may be a good choice if you are familiar with Markdown and Python
+>   and if you want to build a rather simple site with only a spot of
+>   generated content.
 
 [Poole]: https://bitbucket.org/obensonne/poole/overview
 

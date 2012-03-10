@@ -1,3 +1,9 @@
+# Only enter my ssh passphrase once
+# works by running a single ssh-agent at login and telling it to
+# use a fixed socket with ssh-agent -a /tmp/$USER.agent : add this
+# to an autostart.
+export SSH_AUTH_SOCK=/tmp/$USER.agent
+
 # --- Package management... (duplicated in csh.login for safety)
 
 if [ -e /apps/.setup/bash ]
@@ -9,6 +15,9 @@ app setup enthought
 # app setup netcdf-4.1-ifc-64
 app setup gimp
 app setup jabref
+
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)

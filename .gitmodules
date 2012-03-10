@@ -45,12 +45,8 @@
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "screen.vim"]
-	path = screen.vim
-	url = git://github.com/vim-scripts/screen.vim.git
+    ignore = dirty
 [submodule "bundle/screen"]
 	path = bundle/screen
 	url = git://github.com/vim-scripts/screen.vim.git
-[submodule "bundle/conque"]
-	path = bundle/conque
-	url = git://github.com/vim-scripts/Conque-Shell.git
+    ignore = dirty
