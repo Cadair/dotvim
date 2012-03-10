@@ -43,7 +43,7 @@ set showbreak=↪
 set modelines=0
 set history=1000
 set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮
+" set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 set laststatus=2
 set statusline=
@@ -71,16 +71,16 @@ inoremap <F1> <ESC>:set invfullscreen<CR>a
 
 " see http://sontek.net/turning-vim-into-a-modern-python-ide
 "FOLDING
-set foldmethod=indent
-set foldlevel=99
+"set foldmethod=indent
+"set foldlevel=99
 
 "TASKLIST
 map <leader>td <Plug>TaskList
 
 "Supertab
 "I want literal tabs!!!
-let g:SuperTabMappingForward = '<s-tab>'
-let g:SuperTabMappingBackward = 's-space>'
+"let g:SuperTabMappingForward = '<s-tab>'
+"let g:SuperTabMappingBackward = 's-space>'
 "tab completion and python documentation
 "hit <leader>pw for pydoc on a function
 au FileType python set omnifunc=pythoncomplete#Complete
