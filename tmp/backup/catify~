@@ -1,1 +1,0 @@
-cat frogs > tmpf ; cat cat >> tmpf ; cp tmpf cat-frogs ; rm -f tmpf
