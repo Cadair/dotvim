@@ -42,6 +42,6 @@
 	path = bundle/vim-markdown
 	url = git://github.com/ujihisa/vim-markdown.git
     ignore = dirty
-[submodule "screen"]
-	path = screen
+[submodule "bundle/screen"]
+	path = bundle/screen
 	url = git://github.com/ervandew/screen.git

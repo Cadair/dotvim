@@ -55,7 +55,6 @@ set statusline+=%{fugitive#statusline()}
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
 
