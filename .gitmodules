@@ -42,3 +42,7 @@
 	path = bundle/screen
 	url = git://github.com/vim-scripts/screen.vim.git
     ignore = dirty
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git://github.com/ujihisa/vim-markdown.git
+    ignore = dirty
