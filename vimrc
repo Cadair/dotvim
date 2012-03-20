@@ -52,6 +52,11 @@ set statusline+=%{fugitive#statusline()}
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
+" flake8 (press F7 to get pep8 and pyflakes check)
+" run on file write
+" autocmd BufWritePost *.py call Flake8()
+" ignore errors
+let g:flake8_ignore="E501,W293"
 
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
