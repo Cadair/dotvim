@@ -5,8 +5,6 @@ call pathogen#helptags()
 "basic stuff
 "break vi compatibility to allow lots of features.
 set nocompatible
-"don't create a backup file
-set nobackup
 "hide buffers rather than closing them
 set hidden
 "change the leader to a ,
