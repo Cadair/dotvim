@@ -7,7 +7,7 @@ call pathogen#helptags()
 set nocompatible
 "hide buffers rather than closing them
 set hidden
-"change the leader to a ,
+"change the leader to ,
 let mapleader = ","
 set grepprg=grep\ -nH\ $*
 
@@ -19,16 +19,37 @@ set backup                        " enable backups
 set noswapfile                    " It's 2012, Vim.
 " }}}
 
+"a lot of this is inspired by
+"http://stevelosh.com/blog/2010/09/coming-home-to-vim
+"escape with jj and enter commands with ;
+inoremap jj <ESC>
+inoremap <C-j> <ESC>
+nnoremap ; :
+"Disable the arrow keys
+"see jeetworks.org/node/89
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
 "SYNTAX
 syntax on
 filetype on
 filetype plugin indent on
 
+" COLOURS
 set background=dark
 " 256 colour
 set t_Co=256
 color zenburn
+nnoremap <leader>bw :colorscheme badwolf<CR> 
+nnoremap <leader>zb :colorscheme zenburn<CR>
 
+" GENERAL
 set encoding=utf-8
 set ruler
 set cursorline
@@ -42,7 +63,33 @@ set modelines=0
 set history=1000
 " set list
 " set listchars=tab:▸\ ,extends:❯,precedes:❮
+"don't wrap lines
+set nowrap
+"toggle line numbers
+set numberwidth=1
+nnoremap <leader>n :set invnumber<CR>
+"enable paste mode, so that pasted text doesn't have cascading indentation
+set pastetoggle=<F2>
+"formatting of text. place cursor in paragraph or visually select.
+vmap Q gq
+nmap Q gqap
 
+" Save when losing focus
+au FocusLost * :wa
+
+" TABS
+"Stuff to make python look nice
+set tabstop=4
+set shiftwidth=4
+set expandtab
+"expand tab can be annoying as it means backspacing over multiple
+"spaces to get back to no tabs. this is solved by softtabstop
+"also solves compatibility issues between different editors
+set softtabstop=4
+"new line has the same indentation as previous line
+set autoindent
+
+" STATUSLINE
 set laststatus=2
 set statusline=
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
@@ -61,22 +108,19 @@ let g:flake8_ignore="E501,W293"
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
 
-" Save when losing focus
-au FocusLost * :wa
-
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
 "stop f1 from ruining everything
-noremap  <F1> :set invfullscreen<CR>
-inoremap <F1> <ESC>:set invfullscreen<CR>a
+noremap  <F1> <ESC>
+inoremap <F1> <ESC>
 
-" see http://sontek.net/turning-vim-into-a-modern-python-ide
 "FOLDING
-"set foldmethod=indent
-"set foldlevel=99
+set foldmethod=indent
+set foldnestmax=1
+nnoremap <SPACE> za
 
-"TASKLIST
+" TASKLIST
 map <leader>td <Plug>TaskList
 
 "Supertab
@@ -89,50 +133,11 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-"Stuff to make python look nice
-set tabstop=4
-set shiftwidth=4
-set expandtab
-"expand tab can be annoying as it means backspacing over multiple
-"spaces to get back to no tabs. this is solved by softtabstop
-"also solves compatibility issues between different editors
-set softtabstop=4
-"new line has the same indentation as previous line
-set autoindent
-
+" VIM - LATEX
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 
-
-"don't wrap lines
-set nowrap
-"toggle line numbers
-set numberwidth=1
-nnoremap <leader>n :set invnumber<CR>
-
-"enable paste mode, so that pasted text doesn't have cascading indentation
-set pastetoggle=<F2>
-
-"formatting of text. place cursor in paragraph or visually select.
-vmap Q gq
-nmap Q gqap
-
-"a lot of this is inspired by
-"http://stevelosh.com/blog/2010/09/coming-home-to-vim
-"escape with jj and enter commands with ;
-inoremap jj <ESC>
-nnoremap ; :
-"Disable the arrow keys
-"see jeetworks.org/node/89
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
+" WINDOWS
 
 "open and switch to new window
 nnoremap <leader>w <C-w>v<C-w>l
@@ -147,6 +152,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C--> <C-W>-
 nnoremap <C-=> <C-W>+
 
+" SEARCH
 "Intelligent dealing with case-sensitive search. all-lowercase will be
 "insensitive, but any uppercase will be sensitive again.
 set ignorecase
@@ -179,10 +185,10 @@ let g:pep8_map='<leader>8'
 
 " http://vim.wikia.com/wiki/Quickly_adding_and_deleting_empty_lines 
 " Ctrl-Down/Up deletes blank line below/above, and Up/Down inserts. 
-nnoremap <silent><C-Down> m`:silent +g/\m^\s*$/d<CR>``:noh<CR> 
-nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR> 
-nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR> 
-nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR> 
+nnoremap <silent><C-Down> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " NERD Tree
 noremap <F9> :NERDTreeToggle<CR>
@@ -206,12 +212,10 @@ nnoremap <buffer> <leader>2 yypVr-
 nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
 
 "Ctrl-P
-" need to ignore .git here rather than in wildignore or 
-" fugitive breaks.
+" need to ignore .git here rather than in wildignore else fugitive breaks.
 " let g:ctrlp_custom_ignore = '\.git$'
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-
 
 "Wildmenu
 "This is for command completion and alternative display
@@ -244,4 +248,15 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
+
+" Open url in firefox
+" based on http://vim.wikia.com/wiki/VimTip306
+"function! Browser ()
+    "let line = getline (".")
+    "let line = matchstr (line, "\%(http://\|www\.\)[^ ,;\t]*")
+    "exec "!firefox ".line
+"endfunction
+"map <leader>o :call Browser ()<CR>
+map <leader>o :!urlview % <CR>
+
 
