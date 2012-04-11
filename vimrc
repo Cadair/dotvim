@@ -1,3 +1,5 @@
+"a lot of this is inspired by
+"http://stevelosh.com/blog/2010/09/coming-home-to-vim
 "pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -17,10 +19,10 @@ set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
 set noswapfile                    " It's 2012, Vim.
+" Make Vim able to edit crontab files again.
+set backupskip=/tmp/*,/private/tmp/*"
 " }}}
 
-"a lot of this is inspired by
-"http://stevelosh.com/blog/2010/09/coming-home-to-vim
 "escape with jj and enter commands with ;
 inoremap jj <ESC>
 inoremap <C-j> <ESC>
@@ -70,6 +72,7 @@ set numberwidth=1
 nnoremap <leader>n :set invnumber<CR>
 "enable paste mode, so that pasted text doesn't have cascading indentation
 set pastetoggle=<F2>
+set scrolloff=15
 "formatting of text. place cursor in paragraph or visually select.
 vmap Q gq
 nmap Q gqap
@@ -89,6 +92,11 @@ set softtabstop=4
 "new line has the same indentation as previous line
 set autoindent
 
+" FUGITIVE 
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gs :Gstatus<CR>
+
 " STATUSLINE
 set laststatus=2
 set statusline=
@@ -104,12 +112,6 @@ set statusline+=%{fugitive#statusline()}
 " autocmd BufWritePost *.py call Flake8()
 " ignore errors
 let g:flake8_ignore="E501,W293"
-
-" Make Vim able to edit crontab files again.
-set backupskip=/tmp/*,/private/tmp/*"
-
-" Resize splits when the window is resized
-au VimResized * :wincmd =
 
 "stop f1 from ruining everything
 noremap  <F1> <ESC>
@@ -151,6 +153,10 @@ nnoremap <C-l> <C-w>l
 "resizing windows
 nnoremap <C--> <C-W>-
 nnoremap <C-=> <C-W>+
+
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
 
 " SEARCH
 "Intelligent dealing with case-sensitive search. all-lowercase will be
