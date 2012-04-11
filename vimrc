@@ -92,6 +92,16 @@ set softtabstop=4
 "new line has the same indentation as previous line
 set autoindent
 
+" KILL TRAILING WHITESPACE
+" and maintain cursor position
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+
 " FUGITIVE 
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
@@ -110,8 +120,9 @@ set statusline+=%{fugitive#statusline()}
 " flake8 (press F7 to get pep8 and pyflakes check)
 " run on file write
 " autocmd BufWritePost *.py call Flake8()
-" ignore errors
-let g:flake8_ignore="E501,W293"
+" ignore no double spaces between functions errors
+let g:flake8_ignore="E302"
+"E501"
 
 "stop f1 from ruining everything
 noremap  <F1> <ESC>
