@@ -143,6 +143,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Restate this window command after vim has started up
+" (i.e. after vimrc, plugins have been read in).
+" Still haven't figured out what causes this to be rewritten
+" in the first place!
+autocmd VimEnter * nnoremap <C-j> <C-w>j
+
 "resizing windows
 nnoremap <C--> <C-W>-
 nnoremap <C-=> <C-W>+
@@ -279,7 +285,3 @@ augroup END
 "map <leader>o :call Browser ()<CR>
 map <leader>o :!urlview % <CR>
 
-" restate window moving down. something is overwriting this!
-" putting it down here doesn't make it work either. typing 
-" explicitly into vim works. plugin?
-nnoremap <C-j> <C-w>j
