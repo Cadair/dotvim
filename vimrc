@@ -133,25 +133,7 @@ set foldmethod=indent
 set foldnestmax=1
 nnoremap <SPACE> za
 
-" TASKLIST
-map <leader>td <Plug>TaskList
-
-"Supertab
-"I want literal tabs!!!
-"let g:SuperTabMappingForward = '<s-tab>'
-"let g:SuperTabMappingBackward = 's-space>'
-"tab completion and python documentation
-"hit <leader>pw for pydoc on a function
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
-
-" VIM - LATEX
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-
 " WINDOWS
-
 "open and switch to new window
 nnoremap <leader>w <C-w>v<C-w>l
 
@@ -207,6 +189,23 @@ nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
+" TASKLIST
+map <leader>td <Plug>TaskList
+
+"Supertab
+"I want literal tabs!!!
+"let g:SuperTabMappingForward = '<s-tab>'
+"let g:SuperTabMappingBackward = 's-space>'
+"tab completion and python documentation
+"hit <leader>pw for pydoc on a function
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+" VIM - LATEX
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+
 " NERD Tree
 noremap <F9> :NERDTreeToggle<CR>
 inoremap <F9> <esc>:NERDTreeToggle<CR>
@@ -219,6 +218,10 @@ let NERDTreeIgnore = []
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " /NERDTree
+
+" NERDCommenter
+let NERDSpaceDelims = 1
+" /NERDCommenter
 
 "Markdown
 "interpret .md as markdown rather than modula
@@ -254,7 +257,6 @@ set wildignore+=*.pyc                            " Python byte code
 
 set wildignore+=*.orig                           " Merge resolution files
 
-
 "Line return
 " Make sure Vim returns to the same line when you reopen a file.
 " Thanks, Amit
@@ -275,5 +277,3 @@ augroup END
 "endfunction
 "map <leader>o :call Browser ()<CR>
 map <leader>o :!urlview % <CR>
-
-
