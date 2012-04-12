@@ -196,14 +196,18 @@ let NERDTreeIgnore = []
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " /NERDTree
+" NERD Commenter
+let NERDSpaceDelims = 1
+" /NERD Commenter
 
-"Markdown
+" Markdown
 "interpret .md as markdown rather than modula
 autocmd! filetypedetect BufNewFile,BufRead *.md setfiletype markdown
 "Add headings
 nnoremap <buffer> <leader>1 yypVr=
 nnoremap <buffer> <leader>2 yypVr-
 nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
+" /Markdown
 
 "Ctrl-P
 " need to ignore .git here rather than in wildignore or 
@@ -245,3 +249,7 @@ augroup line_return
         \ endif
 augroup END
 
+" restate window moving down. something is overwriting this!
+" putting it down here doesn't make it work either. typing 
+" explicitly into vim works. plugin?
+nnoremap <C-j> <C-w>j
