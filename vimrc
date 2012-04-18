@@ -148,6 +148,8 @@ nnoremap <C-l> <C-w>l
 " Still haven't figured out what causes this to be rewritten
 " in the first place!
 autocmd VimEnter * nnoremap <C-j> <C-w>j
+" Same for the alternative escape command...
+autocmd VimEnter * inoremap <C-j> <ESC>
 
 "resizing windows
 nnoremap <C--> <C-W>-
@@ -284,4 +286,3 @@ augroup END
 "endfunction
 "map <leader>o :call Browser ()<CR>
 map <leader>o :!urlview % <CR>
-
