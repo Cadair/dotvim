@@ -50,6 +50,8 @@ set t_Co=256
 color zenburn
 nnoremap <leader>bw :colorscheme badwolf<CR> 
 nnoremap <leader>zb :colorscheme zenburn<CR>
+nnoremap <leader>zbh :let g:zenburn_high_Contrast = 1<CR>
+nnoremap <leader>zbl :let g:zenburn_high_Contrast = 0<CR>
 
 " GENERAL
 set encoding=utf-8
@@ -183,10 +185,10 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap <leader>v V`]
 
 "AMAZING!!! evaluation of python code. write the code, visually select and
-"press f5 and the code will be turned into its output. changing python for 
+"press f3 and the code will be turned into its output. changing python for 
 "e.g. bash will allow its output to be easily inserted into the file.
 "http://stackoverflow.com/questions/501585
-:vnoremap <f5> :!python<CR>
+:vnoremap <f3> :!python<CR>
 
 let g:pep8_map='<leader>8'
 
@@ -199,6 +201,9 @@ nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " TASKLIST
 map <leader>td <Plug>TaskList
+
+" GUNDO
+nnoremap <F5> :GundoToggle<CR>
 
 "Supertab
 "I want literal tabs!!!
@@ -238,6 +243,8 @@ autocmd! filetypedetect BufNewFile,BufRead *.md setfiletype markdown
 nnoremap <buffer> <leader>1 yypVr=
 nnoremap <buffer> <leader>2 yypVr-
 nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
+nnoremap <buffer> <leader>4 I#### <Esc>A ####<Esc>
+nnoremap <buffer> <leader>5 I##### <Esc>A #####<Esc>
 " /Markdown
 
 "Ctrl-P
@@ -286,3 +293,23 @@ augroup END
 "endfunction
 "map <leader>o :call Browser ()<CR>
 map <leader>o :!urlview % <CR>
+
+" Live word count
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim 
+function! WordCount()
+    let s:old_status = v:statusmsg
+    let position = getpos(".")    
+    exe ":silent normal g\<c-g>"
+    let stat = v:statusmsg
+    let s:word_count = 0 
+    if stat != '--No lines in buffer--'
+        let s:word_count = str2nr(split(v:statusmsg)[11])
+        let v:statusmsg = s:old_status
+    end
+    call setpos('.', position) 
+    return s:word_count
+endfunction
+:set statusline+=wc:%{WordCount()}
+" This seems to break basic typing. The first character is pushed ahead of
+" the rest! now modified to fix this - see Daak in SO thread. 
+" Easiest to just do g<c-g> in command mode. 
