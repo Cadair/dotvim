@@ -49,7 +49,19 @@ set background=dark
 set t_Co=256
 color zenburn
 nnoremap <leader>bw :colorscheme badwolf<CR> 
+
+" function! Zenburn_Toggle ()
+    " if ! exists("g:zenburn_high_Contrast")
+        " let g:zenburn_high_Contrast = 1
+        " colorscheme zenburn
+    " elif exists("g:zenburn_high_Contrast")
+        " let g:zenburn_high_Contrast = 1
+        " colorscheme zenburn
+    " endif
+" endfunction
+"nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
 nnoremap <leader>zb :colorscheme zenburn<CR>
+
 
 " GENERAL
 set encoding=utf-8
@@ -81,7 +93,7 @@ nmap Q gqap
 au FocusLost * :wa
 
 " TABS
-"Stuff to make python look nice
+" Mostly to make python look nice
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -147,6 +159,8 @@ nnoremap <C-l> <C-w>l
 " (i.e. after vimrc, plugins have been read in).
 " Still haven't figured out what causes this to be rewritten
 " in the first place!
+" Think it is from vim-latex. c-j is used to jump around
+" placeholders.
 autocmd VimEnter * nnoremap <C-j> <C-w>j
 " Same for the alternative escape command...
 autocmd VimEnter * inoremap <C-j> <ESC>
@@ -206,9 +220,15 @@ map <leader>td <Plug>TaskList
 "let g:SuperTabMappingBackward = 's-space>'
 "tab completion and python documentation
 "hit <leader>pw for pydoc on a function
-au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+
+" PYTHON 
+" tab completion
+au FileType python set omnifunc=pythoncomplete#Complete
+" automatically wrap comments to 68 characters
+au FileType python set tw=68
+au FileType python set formatoptions=cqa
 
 " VIM - LATEX
 let g:tex_flavor='latex'
@@ -238,6 +258,8 @@ autocmd! filetypedetect BufNewFile,BufRead *.md setfiletype markdown
 nnoremap <buffer> <leader>1 yypVr=
 nnoremap <buffer> <leader>2 yypVr-
 nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
+" Add emphasis
+nnoremap <leader>b bi*<Esc>ea*<Esc>
 " /Markdown
 
 "Ctrl-P
