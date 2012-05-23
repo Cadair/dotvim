@@ -42,6 +42,9 @@ noremap   <Right>  <NOP>
 syntax on
 filetype on
 filetype plugin indent on
+" fix highlighting when it messes up
+nnoremap <F1> <ESC>:syntax sync fromstart<CR>
+inoremap <F1> <C-o>:syntax sync fromstart<CR>
 
 " COLOURS
 set background=dark
@@ -267,6 +270,8 @@ nnoremap <buffer> <leader>4 I#### <Esc>A ####<Esc>
 nnoremap <buffer> <leader>5 I##### <Esc>A #####<Esc>
 " Add emphasis
 nnoremap <leader>b bi*<Esc>ea*<Esc>
+" quick mmd reference
+nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
 " /Markdown
 
 "Ctrl-P
@@ -274,6 +279,17 @@ nnoremap <leader>b bi*<Esc>ea*<Esc>
 " let g:ctrlp_custom_ignore = '\.git$'
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+" max files
+let g:ctrlp_max_files = 10000
+" faster file searching
+if has("unix")
+    let g:ctrlp_user_command = {
+        \    'types': {
+        \        1: ['.git/', 'cd %s && git ls-files']
+        \    },
+        \    'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+        \ }
+endif
 
 "Wildmenu
 "This is for command completion and alternative display
