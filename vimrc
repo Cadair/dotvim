@@ -51,27 +51,21 @@ set background=dark
 " 256 colour
 set t_Co=256
 color zenburn
+
+" Sometimes it's nice to switch color quickly 
+" for a change of scenery or lighting.
+function! Zenburn_Toggle ()
+    if g:zenburn_high_Contrast == 0
+        let g:zenburn_high_Contrast = 1
+        colorscheme zenburn
+    elseif g:zenburn_high_Contrast == 1
+        let g:zenburn_high_Contrast = 0
+        colorscheme zenburn
+    endif
+endfunction
+nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
 nnoremap <leader>bw :colorscheme badwolf<CR> 
 
-" function! Zenburn_Toggle ()
-    " if ! exists("g:zenburn_high_Contrast")
-        " let g:zenburn_high_Contrast = 1
-        " colorscheme zenburn
-    " elif exists("g:zenburn_high_Contrast")
-        " let g:zenburn_high_Contrast = 1
-        " colorscheme zenburn
-    " endif
-" endfunction
-"nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
-nnoremap <leader>zb :colorscheme zenburn<CR>
-nnoremap <leader>zbh :let g:zenburn_high_Contrast = 1<CR>
-nnoremap <leader>zbl :let g:zenburn_high_Contrast = 0<CR>
-
-
-" GENERAL
-set encoding=utf-8
-set ruler
-set cursorline
 set ttyfast
 set backspace=indent,eol,start
 set autoread
