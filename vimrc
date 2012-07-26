@@ -1,5 +1,7 @@
+"Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
+
 "pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -38,35 +40,6 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-"SYNTAX
-syntax on
-filetype on
-filetype plugin indent on
-" fix highlighting when it messes up
-nnoremap <F1> <ESC>:syntax sync fromstart<CR>
-inoremap <F1> <C-o>:syntax sync fromstart<CR>
-
-" COLOURS
-set background=dark
-" 256 colour
-set t_Co=256
-color zenburn
-
-" Zenburn is great, but sometimes we need to switch to a higher
-" contrast scheme for light environments.
-function! Zenburn_Toggle ()
-    if g:zenburn_high_Contrast == 0
-        let g:zenburn_high_Contrast = 1
-        colorscheme zenburn
-    elseif g:zenburn_high_Contrast == 1
-        let g:zenburn_high_Contrast = 0
-        colorscheme zenburn
-    endif
-endfunction
-nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
-" And for something different
-nnoremap <leader>bw :colorscheme badwolf<CR> 
-
 set ttyfast
 set backspace=indent,eol,start
 set autoread
@@ -84,14 +57,45 @@ set numberwidth=1
 nnoremap <leader>n :set invnumber<CR>
 "enable paste mode, so that pasted text doesn't have cascading indentation
 set pastetoggle=<F2>
-"cursor in middle of screen, always
 set scrolloff=999
-"formatting of text. place cursor in paragraph or visually select.
+"auto formatting of text to match the set linewidth (default 79)
+"place cursor in paragraph or visually select.
 vmap Q gq
 nmap Q gqap
 
 " Save when losing focus
 au FocusLost * :wa
+
+"SYNTAX
+syntax on
+filetype on
+filetype plugin indent on
+" fix highlighting when it messes up
+nnoremap <F1> <ESC>:syntax sync fromstart<CR>
+inoremap <F1> <C-o>:syntax sync fromstart<CR>
+
+" COLOURS
+set background=dark
+" 256 colour
+set t_Co=256
+color zenburn
+
+" Zenburn is great, but sometimes we need to switch to a higher
+" contrast scheme for light environments.
+function! Zenburn_Toggle ()
+    if g:colors_name != "zenburn"
+        colorscheme zenburn
+    elseif g:zenburn_high_Contrast == 0
+        let g:zenburn_high_Contrast = 1
+        colorscheme zenburn
+    elseif g:zenburn_high_Contrast == 1
+        let g:zenburn_high_Contrast = 0
+        colorscheme zenburn
+    endif
+endfunction
+nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
+" And for something different
+nnoremap <leader>bw :colorscheme badwolf<CR> 
 
 " TABS
 " Mostly to make python look nice
@@ -149,7 +153,6 @@ nnoremap <SPACE> za
 " WINDOWS
 "open and switch to new window
 nnoremap <leader>w <C-w>v<C-w>l
-
 "easy movement around windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -169,7 +172,6 @@ autocmd VimEnter * inoremap <C-j> <ESC>
 "resizing windows
 nnoremap <C--> <C-W>-
 nnoremap <C-=> <C-W>+
-
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
@@ -179,7 +181,6 @@ au VimResized * :wincmd =
 "insensitive, but any uppercase will be sensitive again.
 set ignorecase
 set smartcase
-
 "search highlighting. ,<space> then removes highlighting
 set incsearch
 set showmatch
@@ -213,6 +214,7 @@ nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " TASKLIST
+" makes a list of all fixme and todo in the file
 map <leader>td <Plug>TaskList
 
 " GUNDO
@@ -232,7 +234,7 @@ set completeopt=menuone,longest,preview
 au FileType python set omnifunc=pythoncomplete#Complete
 " automatically wrap comments to 68 characters
 au FileType python set tw=68
-au FileType python set formatoptions=cqa
+au FileType python set formatoptions=cqb
 
 " VIM - LATEX
 let g:tex_flavor='latex'
@@ -241,12 +243,9 @@ let g:Tex_DefaultTargetFormat='pdf'
 " NERD Tree
 noremap <F9> :NERDTreeToggle<CR>
 inoremap <F9> <esc>:NERDTreeToggle<CR>
-
 au Filetype nerdtree setlocal nolist
-
 let NERDTreeHighlightCursorline = 1
 let NERDTreeIgnore = []
-
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " /NERDTree
@@ -291,7 +290,6 @@ endif
 "This is for command completion and alternative display
 set wildmenu
 set wildmode=longest:full
-
 " don't ignore git here or fugitive breaks
 " set wildignore+=*/.hg/*,*/.svn*,
 set wildignore+=*.aux,*.out,*.toc                " Latex intermediatries
@@ -299,12 +297,9 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
-
 set wildignore+=*.luac                           " Lua byte code
-
 set wildignore+=migrations                       " Django migrations
 set wildignore+=*.pyc                            " Python byte code
-
 set wildignore+=*.orig                           " Merge resolution files
 
 "Line return
@@ -343,7 +338,7 @@ function! WordCount()
     call setpos('.', position) 
     return s:word_count
 endfunction
-:set statusline+=wc:%{WordCount()}
+:set statusline+=\ wc:%{WordCount()}
 " This seems to break basic typing. The first character is pushed ahead of
 " the rest! now modified to fix this - see Daak in SO thread. 
 " Easiest to just do g<c-g> in command mode. 
