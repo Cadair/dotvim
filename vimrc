@@ -336,7 +336,7 @@ function! WordCount()
     call setpos('.', position) 
     return s:word_count
 endfunction
-:set statusline+=wc:%{WordCount()}
+:set statusline+=\ wc:%{WordCount()}
 " This seems to break basic typing. The first character is pushed ahead of
 " the rest! now modified to fix this - see Daak in SO thread. 
 " Easiest to just do g<c-g> in command mode. 
