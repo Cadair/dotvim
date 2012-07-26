@@ -52,8 +52,8 @@ set background=dark
 set t_Co=256
 color zenburn
 
-" Sometimes it's nice to switch color quickly 
-" for a change of scenery or lighting.
+" Zenburn is great, but sometimes we need to switch to a higher
+" contrast scheme for light environments.
 function! Zenburn_Toggle ()
     if g:zenburn_high_Contrast == 0
         let g:zenburn_high_Contrast = 1
@@ -64,6 +64,7 @@ function! Zenburn_Toggle ()
     endif
 endfunction
 nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
+" And for something different
 nnoremap <leader>bw :colorscheme badwolf<CR> 
 
 set ttyfast
@@ -83,7 +84,8 @@ set numberwidth=1
 nnoremap <leader>n :set invnumber<CR>
 "enable paste mode, so that pasted text doesn't have cascading indentation
 set pastetoggle=<F2>
-set scrolloff=15
+"cursor in middle of screen, always
+set scrolloff=999
 "formatting of text. place cursor in paragraph or visually select.
 vmap Q gq
 nmap Q gqap
