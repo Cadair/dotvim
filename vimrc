@@ -40,6 +40,8 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+" use the mouse for scrolling
+set mouse=a
 set ttyfast
 set backspace=indent,eol,start
 set autoread
@@ -79,8 +81,9 @@ set background=dark
 " 256 colour
 set t_Co=256
 color zenburn
-" Sometimes it's nice to switch color quickly 
-" for a change of scenery or lighting.
+
+" Zenburn is great, but sometimes we need to switch to a higher
+" contrast scheme for light environments.
 function! Zenburn_Toggle ()
     if g:colors_name != "zenburn"
         colorscheme zenburn
@@ -93,6 +96,9 @@ function! Zenburn_Toggle ()
     endif
 endfunction
 nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
+nnoremap <F8> :call Zenburn_Toggle ()<CR>
+inoremap <F8> <c-o>:call Zenburn_Toggle ()<CR>
+" And for something different
 nnoremap <leader>bw :colorscheme badwolf<CR> 
 
 " TABS
@@ -151,6 +157,7 @@ nnoremap <SPACE> za
 " WINDOWS
 "open and switch to new window
 nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>s <C-w>s<C-w>j
 "easy movement around windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -184,6 +191,8 @@ set incsearch
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
+"select current line without indentation
+nnoremap vv ^vg_
 
 "move around brackets easier
 nnoremap <tab> %
@@ -210,6 +219,9 @@ nnoremap <silent><C-Down> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+"calculator
+inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 " TASKLIST
 " makes a list of all fixme and todo in the file
@@ -284,6 +296,8 @@ if has("unix")
         \    'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
         \ }
 endif
+" open new file in same window
+let g:ctrlp_open_new_file = 'r'
 
 "Wildmenu
 "This is for command completion and alternative display
