@@ -145,7 +145,7 @@ inoremap <F1> <ESC>
 
 "FOLDING
 set foldmethod=indent
-set foldnestmax=1
+set foldnestmax=2
 nnoremap <SPACE> za
 
 " WINDOWS
@@ -263,6 +263,7 @@ nnoremap <buffer> <leader>4 I#### <Esc>A ####<Esc>
 nnoremap <buffer> <leader>5 I##### <Esc>A #####<Esc>
 " Add emphasis
 nnoremap <leader>b bi*<Esc>ea*<Esc>
+inoremap <C-b> <C-o>b*<Esc>ea*
 " quick mmd reference
 nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
 " /Markdown
