@@ -1,10 +1,12 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
+" let $PYTHONHOME='/apps/enthought-7.3-1/'
 
 "pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
 
 "basic stuff
 "break vi compatibility to allow lots of features.
@@ -138,12 +140,6 @@ set statusline+=%{fugitive#statusline()}
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-" flake8 (press F7 to get pep8 and pyflakes check)
-" run on file write
-" autocmd BufWritePost *.py call Flake8()
-" ignore no double spaces between functions errors
-let g:flake8_ignore="E302"
-"E501"
 
 "stop f1 from ruining everything
 noremap  <F1> <ESC>
@@ -210,8 +206,6 @@ nnoremap <leader>v V`]
 "e.g. bash will allow its output to be easily inserted into the file.
 "http://stackoverflow.com/questions/501585
 :vnoremap <f3> :!python<CR>
-
-let g:pep8_map='<leader>8'
 
 " http://vim.wikia.com/wiki/Quickly_adding_and_deleting_empty_lines 
 " Ctrl-Down/Up deletes blank line below/above, and Up/Down inserts. 
