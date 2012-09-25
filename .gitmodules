@@ -14,17 +14,9 @@
 	path = bundle/nerdtree
 	url = http://git@github.com/scrooloose/nerdtree.git
     ignore= dirty
-[submodule "bundle/pep8"]
-	path = bundle/pep8
-	url = http://git@github.com/vim-scripts/pep8
-    ignore= dirty
 [submodule "bundle/tasklist"]
 	path = bundle/tasklist
 	url = http://github.com/vim-scripts/TaskList.vim.git
-    ignore = dirty
-[submodule "bundle/pydoc"]
-	path = bundle/pydoc
-	url = http://github.com/fs111/pydoc.vim.git
     ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
@@ -42,10 +34,12 @@
 	path = bundle/screen
 	url = git://github.com/ervandew/screen.git
     ignore = dirty
-[submodule "bundle/vim-flake8"]
-	path = bundle/vim-flake8
-	url = git://github.com/nvie/vim-flake8.git
-    ignore = dirty
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "bundle/gundo.vim"]
+	path = bundle/gundo.vim
+	url = git://github.com/sjl/gundo.vim.git
+[submodule "bundle/vim-multimarkdown"]
+	path = bundle/vim-multimarkdown
+	url = git://github.com/jngeist/vim-multimarkdown.git
