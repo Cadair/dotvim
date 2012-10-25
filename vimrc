@@ -269,6 +269,7 @@ nnoremap <buffer> <leader>4 I#### <Esc>A ####<Esc>
 nnoremap <buffer> <leader>5 I##### <Esc>A #####<Esc>
 " Add emphasis
 nnoremap <leader>b bi*<Esc>ea*<Esc>
+inoremap <C-b> <C-o>b*<Esc>ea*
 " quick mmd reference
 nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
 " /Markdown
@@ -348,3 +349,13 @@ endfunction
 " This seems to break basic typing. The first character is pushed ahead of
 " the rest! now modified to fix this - see Daak in SO thread. 
 " Easiest to just do g<c-g> in command mode. 
+
+" Activate code block highlighting in a restructuredtext file
+function! Hi_Py ()
+    let b:current_syntax=''
+    unlet b:current_syntax
+    syntax include @py syntax/python.vim
+    syntax region pythoncode start=/\.. python::/ end=/^$\n^$/ contains=@py
+endfunction
+
+map <leader>h :call Hi_Py ()<CR>
