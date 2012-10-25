@@ -34,9 +34,6 @@
 	path = bundle/screen
 	url = git://github.com/ervandew/screen.git
     ignore = dirty
-[submodule "bundle/python-mode"]
-	path = bundle/python-mode
-	url = git://github.com/klen/python-mode.git
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git

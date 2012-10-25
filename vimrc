@@ -1,12 +1,11 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
-" let $PYTHONHOME='/apps/enthought-7.3-1/'
+let $PYTHONHOME='/apps/enthought-7.2-1/'
 
 "pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-
 
 "basic stuff
 "break vi compatibility to allow lots of features.
@@ -15,6 +14,8 @@ set nocompatible
 set hidden
 "change the leader to ,
 let mapleader = ","
+" also use \ as leader
+nmap \ <leader>
 set grepprg=grep\ -nH\ $*
 
 " Backups {{{
@@ -27,8 +28,8 @@ set noswapfile                    " It's 2012, Vim.
 set backupskip=/tmp/*,/private/tmp/*"
 " }}}
 
-"escape with jj and enter commands with ;
-inoremap jj <ESC>
+"escape with jk and enter commands with ;
+inoremap jk <ESC>
 inoremap <C-j> <ESC>
 nnoremap ; :
 "Disable the arrow keys
@@ -59,6 +60,7 @@ set nowrap
 "toggle line numbers
 set numberwidth=1
 nnoremap <leader>n :set invnumber<CR>
+nnoremap <leader>N :set invrelativenumber<CR>
 "enable paste mode, so that pasted text doesn't have cascading indentation
 set pastetoggle=<F2>
 set scrolloff=999
@@ -159,6 +161,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" tile all open buffers in vertical splits
+nnoremap <silent> <leader>a :vertical :ball<CR>
+" focus on current window
+nnoremap <silent> <leader>o :only<CR>
 
 " Restate this window command after vim has started up
 " (i.e. after vimrc, plugins have been read in).
@@ -268,7 +274,7 @@ nnoremap <buffer> <leader>3 I### <Esc>A ###<Esc>
 nnoremap <buffer> <leader>4 I#### <Esc>A ####<Esc>
 nnoremap <buffer> <leader>5 I##### <Esc>A #####<Esc>
 " Add emphasis
-nnoremap <leader>b bi*<Esc>ea*<Esc>
+nnoremap <leader>b bi*<Esc>ea*<Esc><CR>
 inoremap <C-b> <C-o>b*<Esc>ea*
 " quick mmd reference
 nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
@@ -327,8 +333,8 @@ augroup END
     "let line = matchstr (line, "\%(http://\|www\.\)[^ ,;\t]*")
     "exec "!firefox ".line
 "endfunction
-"map <leader>o :call Browser ()<CR>
-map <leader>o :!urlview % <CR>
+"map <leader>u :call Browser ()<CR>
+map <leader>u :!urlview % <CR>
 
 " Live word count
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim 
