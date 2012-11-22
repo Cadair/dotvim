@@ -1,7 +1,7 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
-let $PYTHONHOME='/apps/enthought-7.2-1/'
+let $PYTHONHOME='/apps/enthought-7.3-2/'
 
 "pathogen
 call pathogen#runtime_append_all_bundles()
@@ -44,7 +44,7 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
 " use the mouse for scrolling
-set mouse=a
+" set mouse=a
 set ttyfast
 set backspace=indent,eol,start
 set autoread
@@ -85,6 +85,10 @@ set background=dark
 " 256 colour
 set t_Co=256
 color zenburn
+let g:zenburn_high_Contrast = 1
+colorscheme zenburn
+" let g:solarized_termcolors=256
+" colorscheme solarized
 
 " Zenburn is great, but sometimes we need to switch to a higher
 " contrast scheme for light environments.
@@ -200,9 +204,12 @@ nnoremap vv ^vg_
 nnoremap <tab> %
 vnoremap <tab> %
 
+"add spaces after commas on line
+nnoremap <leader>, :s/,\s*/, /g<CR>:noh<CR>
+
 "quick editing and reloading of .vimrc
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>sv :source $MYVIMRC<CR>
 
 "quickly select just pasted text
 nnoremap <leader>v V`]
@@ -278,7 +285,14 @@ nnoremap <leader>b bi*<Esc>ea*<Esc><CR>
 inoremap <C-b> <C-o>b*<Esc>ea*
 " quick mmd reference
 nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
+
+au FileType markdown set tw=68
+au FileType mmd set tw=68
 " /Markdown
+
+" Screen
+" use tmux
+" let g:ScreenImpl = 'Tmux'
 
 "Ctrl-P
 " need to ignore .git here rather than in wildignore else fugitive breaks.
