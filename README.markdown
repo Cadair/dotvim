@@ -1,3 +1,12 @@
+Requires Vim 7.3, compiled with
+
+    ./configure --with-features=big --enable-pythoninterp
+
+Otherwise we get problems with python mode and gundo (at least). If
+using some sort of virtualenv python e.g. Enthought add
+
+    --with-python-config-dir=/path/to/python/python2.7/config
+
 Installation:
 =============
 
