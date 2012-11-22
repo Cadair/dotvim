@@ -37,9 +37,16 @@
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
+    ignore = dirty
 [submodule "bundle/vim-multimarkdown"]
 	path = bundle/vim-multimarkdown
 	url = git://github.com/jngeist/vim-multimarkdown.git
+    ignore = dirty
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+    ignore = dirty
+[submodule "bundle/vim-python-mode"]
+	path = bundle/vim-python-mode
+	url = git://github.com/klen/python-mode.git
+    ignore = dirty
