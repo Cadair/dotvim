@@ -50,3 +50,6 @@
 	path = bundle/vim-python-mode
 	url = git://github.com/klen/python-mode.git
     ignore = dirty
+[submodule "bundle/gitv"]
+	path = bundle/gitv
+	url = git://github.com/vim-scripts/gitv.git
