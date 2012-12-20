@@ -1,7 +1,6 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
-" let $PYTHONHOME='/home/aaron/.virtualenvs/epd/'
 
 "pathogen
 " disable python mode if vim version less than 7.3
@@ -83,6 +82,9 @@ filetype plugin indent on
 " fix highlighting when it messes up
 nnoremap <F1> <ESC>:syntax sync fromstart<CR>
 inoremap <F1> <C-o>:syntax sync fromstart<CR>
+
+" Get syntax group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " COLOURS
 set background=dark
@@ -291,6 +293,8 @@ nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientif
 
 au FileType markdown set tw=68
 au FileType mmd set tw=68
+au FileType mkd set tw=68
+au FileType md set tw=68
 " /Markdown
 
 " Screen
@@ -373,12 +377,25 @@ endfunction
 " the rest! now modified to fix this - see Daak in SO thread. 
 " Easiest to just do g<c-g> in command mode. 
 
-" Activate code block highlighting in a restructuredtext file
-function! Hi_Py ()
+" Activate code block highlighting in a restructuredtext / md file
+" TODO: surely this can be extended to ctrl-p as well - to 
+" allow syntax highlighting of rst / md docstrings?
+function! HiPy ()
     let b:current_syntax=''
     unlet b:current_syntax
     syntax include @py syntax/python.vim
-    syntax region pythoncode start=/\.. python::/ end=/^$\n^$/ contains=@py
+    " end=/^$\n^$/
+    syntax region rstpythoncode start=/\.\. python::/ end=/^$\n^\(\s\{4,}\)\@!/ contains=@py
+    " code blocks are indented by 4 spaces and started with a newline followed
+    " by :::python in markdown. the start string has to include the line
+    " before as this is what mkdCode does, and the match / region that 
+    " starts first has priority. when they both start in the same place the
+    " item defined last takes priority
+    " they end when there is an empty newline followed by a non-indented line
+    syntax region mdpythoncode start="^\s*\n\s\{4,}:::python" end=/^$\n^\(\s\{4,}\)\@!/ contains=@py
+    " start="^\s*:::python" 
+    " the markdown one keeps getting overridden by the mkdCode group
+    " hi def link mdpythoncode SpecialComment
 endfunction
 
-map <leader>h :call Hi_Py ()<CR>
+map <leader>h :call HiPy ()<CR>

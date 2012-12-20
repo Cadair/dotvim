@@ -40,7 +40,7 @@
     ignore = dirty
 [submodule "bundle/vim-multimarkdown"]
 	path = bundle/vim-multimarkdown
-	url = git://github.com/jngeist/vim-multimarkdown.git
+	url = git@github.com:aaren/vim-multimarkdown.git
     ignore = dirty
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
@@ -50,6 +50,11 @@
 	path = bundle/vim-python-mode
 	url = git://github.com/klen/python-mode.git
     ignore = dirty
-[submodule "bundle/solarized"]
-	path = bundle/solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/gitv"]
+	path = bundle/gitv
+	url = git://github.com/vim-scripts/gitv.git
+    ignore = dirty
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+    url = git://github.com/altercation/vim-colors-solarized.git
+    ignore = dirty
