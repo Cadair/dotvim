@@ -1,7 +1,7 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
-let $PYTHONHOME='/apps/enthought-7.3-2/'
+" let $PYTHONHOME='/apps/enthought-7.3-2/'
 
 "pathogen
 call pathogen#runtime_append_all_bundles()
@@ -375,7 +375,9 @@ endfunction
 " Easiest to just do g<c-g> in command mode. 
 
 " Activate code block highlighting in a restructuredtext / md file
-function! Hi_Py ()
+" TODO: surely this can be extended to ctrl-p as well - to 
+" allow syntax highlighting of rst / md docstrings?
+function! HiPy ()
     let b:current_syntax=''
     unlet b:current_syntax
     syntax include @py syntax/python.vim
@@ -393,4 +395,4 @@ function! Hi_Py ()
     " hi def link mdpythoncode SpecialComment
 endfunction
 
-map <leader>h :call Hi_Py ()<CR>
+map <leader>h :call HiPy ()<CR>
