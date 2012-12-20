@@ -1,9 +1,13 @@
 "Aaron O'Leary vimrc 2012
 "a lot of this is inspired by
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
-let $PYTHONHOME='/apps/enthought-7.3-2/'
+" let $PYTHONHOME='/home/aaron/.virtualenvs/epd/'
 
 "pathogen
+" disable python mode if vim version less than 7.3
+if v:version < 703
+    let g:pathogen_disabled = ['vim-python-mode']
+endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -84,7 +88,6 @@ inoremap <F1> <C-o>:syntax sync fromstart<CR>
 set background=dark
 " 256 colour
 set t_Co=256
-color zenburn
 let g:zenburn_high_Contrast = 1
 colorscheme zenburn
 " let g:solarized_termcolors=256
