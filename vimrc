@@ -71,6 +71,7 @@ set scrolloff=999
 "place cursor in paragraph or visually select.
 vmap Q gq
 nmap Q gqap
+nnoremap <leader>t :set tw=72<CR>
 
 " Save when losing focus
 au FocusLost * :wa
