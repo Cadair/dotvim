@@ -81,7 +81,7 @@ syntax on
 filetype on
 filetype plugin indent on
 " fix highlighting when it messes up
-nnoremap <F1> <ESC>:syntax sync fromstart<CR>
+nnoremap <F1> :syn sync fromstart<CR>
 inoremap <F1> <C-o>:syntax sync fromstart<CR>
 
 " Get syntax group under cursor
@@ -202,7 +202,7 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader>. :noh<cr>
 "select current line without indentation
 nnoremap vv ^vg_
 
@@ -212,6 +212,9 @@ vnoremap <tab> %
 
 "add spaces after commas on line
 nnoremap <leader>, :s/,\s*/, /g<CR>:noh<CR>
+
+" insert spaces around character under cursor
+nnoremap <leader><Space> i<space><esc>la<space><esc>h
 
 "quick editing and reloading of .vimrc
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
