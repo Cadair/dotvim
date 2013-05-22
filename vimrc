@@ -180,7 +180,7 @@ set statusline+=%{fugitive#statusline()}
 
 "FOLDING
 set foldmethod=indent
-set foldnestmax=2
+au FileType python set foldnestmax=2
 nnoremap <SPACE> za
 
 " WINDOWS
