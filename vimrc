@@ -159,6 +159,14 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>ga :Git commit --amend<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
+" Gitv
+nmap <leader>gv :Gitv --all<cr>
+nmap <leader>gV :Gitv! --all<cr>
+vmap <leader>gV :Gitv! --all<cr>
+highlight diffAdded guifg=#00bf00
+highlight diffRemoved guifg=#bf0000
+set lazyredraw
+
 " STATUSLINE
 set laststatus=2
 set statusline=
