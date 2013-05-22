@@ -99,12 +99,17 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " COLOURS
 set background=dark
-" 256 colour
-set t_Co=256
-let g:zenburn_high_Contrast = 1
-colorscheme zenburn
+
+" 256 colour zenburn
+" set t_Co=256
+" let g:zenburn_high_Contrast = 1
+" colorscheme zenburn
+
+" 16 colour Solarized - works properly this way with terminator and tmux.
 " let g:solarized_termcolors=256
-" colorscheme solarized
+" make solarized use transparent background
+let g:solarized_termtrans=1
+colorscheme solarized
 
 " Zenburn is great, but sometimes we need to switch to a higher
 " contrast scheme for light environments.
