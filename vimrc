@@ -220,6 +220,9 @@ vnoremap <tab> %
 "add spaces after commas on line
 nnoremap <leader>, :s/,\s*/, /g<CR>:noh<CR>
 
+"space around math operators on line
+nnoremap <leader>= :s/\s*\([-+=/*<>^&!%]\+\)\s*/ \1 /g<CR>:noh<CR>
+
 " insert spaces around character under cursor
 nnoremap <leader><Space> i<space><esc>la<space><esc>h
 
