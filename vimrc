@@ -21,6 +21,10 @@ let mapleader = ","
 nmap \ <leader>
 set grepprg=grep\ -nH\ $*
 
+"encoding utf-8
+set enc=utf-8
+set fileencoding=utf-8
+
 " Backups {{{
 "set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
