@@ -71,6 +71,9 @@ nnoremap <leader>N :set invrelativenumber<CR>
 "enable paste mode, so that pasted text doesn't have cascading indentation
 set pastetoggle=<F2>
 set scrolloff=999
+"stop f1 from ruining everything
+noremap  <F1> <ESC>
+inoremap <F1> <ESC>
 "auto formatting of text to match the set linewidth (default 79)
 "place cursor in paragraph or visually select.
 vmap Q gq
@@ -156,10 +159,6 @@ set statusline+=%{fugitive#statusline()}
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-
-"stop f1 from ruining everything
-noremap  <F1> <ESC>
-inoremap <F1> <ESC>
 
 "FOLDING
 set foldmethod=indent
