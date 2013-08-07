@@ -7,6 +7,7 @@
 if v:version < 703
     let g:pathogen_disabled = ['vim-python-mode']
 endif
+let g:pathogen_disabled = ['jedi-vim']
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
