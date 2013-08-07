@@ -148,7 +148,9 @@ autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
 
 " FUGITIVE 
 nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gp :Git add -p<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>ga :Git commit --amend<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
 " STATUSLINE
