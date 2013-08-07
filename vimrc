@@ -415,3 +415,8 @@ function! HiPy ()
 endfunction
 
 map <leader>h :call HiPy ()<CR>
+
+" c++ intro course
+au FileType cpp set tabstop=2
+au FileType cpp set shiftwidth=2
+au FileType cpp set softtabstop=2
