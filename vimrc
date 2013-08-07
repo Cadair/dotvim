@@ -304,6 +304,8 @@ nnoremap <leader>b bi*<Esc>ea*<Esc><CR>
 inoremap <C-b> <C-o>b*<Esc>ea*
 " quick mmd reference
 nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientific_writing.md<CR>
+" mmd natbib ref
+nnoremap <leader>nb <C-w><C-v><C-l>:e ~/writing/mmd-natbib-ref<CR>
 
 au FileType markdown set tw=68
 au FileType mmd set tw=68
