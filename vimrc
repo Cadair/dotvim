@@ -79,6 +79,8 @@ inoremap <F1> <ESC>
 vmap Q gq
 nmap Q gqap
 nnoremap <leader>t :set tw=72<CR>
+" highlight column at 80 characters
+set cc=80
 
 " Save when losing focus
 au FocusLost * :wa
