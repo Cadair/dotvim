@@ -7,7 +7,6 @@
 if v:version < 703
     let g:pathogen_disabled = ['vim-python-mode']
 endif
-let g:pathogen_disabled = ['jedi-vim', 'vim-python-mode']
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -281,10 +280,22 @@ set completeopt=menuone,longest,preview
 
 " PYTHON 
 " tab completion
+" this maps the omnifunc completion (which is mapped to supertab) to the 
+" pythoncomplete script (comes with vim)
 au FileType python set omnifunc=pythoncomplete#Complete
 " automatically wrap comments to 68 characters
 au FileType python set tw=68
 au FileType python set formatoptions=cqb
+
+" PYTHON MODE
+" turn off doc window
+let g:pymode_doc=0
+" turn off code running
+let g:pymode_run=0
+" I've compiled vim specifically for canopy so this should still work
+let g:pymode_virtualenv=0
+" TODO: some way of toggling lint error window
+
 
 " VIM - LATEX
 let g:tex_flavor='latex'
