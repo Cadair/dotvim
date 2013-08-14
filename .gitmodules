@@ -55,3 +55,6 @@
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
     ignore = dirty
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
