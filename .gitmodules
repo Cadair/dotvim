@@ -30,9 +30,6 @@
 	path = bundle/vim-markdown
 	url = git://github.com/ujihisa/vim-markdown.git
     ignore = dirty
-[submodule "bundle/screen"]
-	path = bundle/screen
-	url = git://github.com/ervandew/screen.git
     ignore = dirty
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
@@ -57,8 +54,4 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-    ignore = dirty
-[submodule "bundle/jedi-vim"]
-	path = bundle/jedi-vim
-	url = git://github.com/davidhalter/jedi-vim.git
     ignore = dirty
