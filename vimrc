@@ -282,7 +282,7 @@ set completeopt=menuone,longest,preview
 " tab completion
 " this maps the omnifunc completion (which is mapped to supertab) to the 
 " pythoncomplete script (comes with vim)
-au FileType python set omnifunc=pythoncomplete#Complete
+" au FileType python set omnifunc=pythoncomplete#Complete
 " automatically wrap comments to 68 characters
 au FileType python set tw=68
 au FileType python set formatoptions=cqb
@@ -296,6 +296,22 @@ let g:pymode_run=0
 let g:pymode_virtualenv=0
 " TODO: some way of toggling lint error window
 
+" IPython
+function! Start_IPython ()
+    " Connect to existing kernel
+    " TODO: start kernel if not exist?
+    :IPython
+    " completion using ipython
+    " N.B. setl is local, i.e current buffer, use set for global
+    au FileType python setl omnifunc=CompleteIPython
+endfunction
+nnoremap <leader>ip :call Start_IPython()<CR>
+" TODO: resize documentation window
+" TODO: command to call all imports into ipython
+" TODO: make all imports when call IPython?
+" TODO: evaluate gfm fenced code block
+" see https://github.com/wmvanvliet/vim-ipython/commit/d077b47248213ac02e04010a2040bd8a91149165
+" and https://github.com/ivanov/vim-ipython/pull/41
 
 " VIM - LATEX
 let g:tex_flavor='latex'
