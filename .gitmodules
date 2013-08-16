@@ -10,10 +10,6 @@
 	path = bundle/vim-unimpaired
 	url = http://github.com/tpope/vim-unimpaired.git
     ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = http://git@github.com/scrooloose/nerdtree.git
-    ignore = dirty
 [submodule "bundle/tasklist"]
 	path = bundle/tasklist
 	url = http://github.com/vim-scripts/TaskList.vim.git
