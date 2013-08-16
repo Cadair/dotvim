@@ -453,6 +453,9 @@ function! HiPy ()
     " start="^\s*:::python" 
     " the markdown one keeps getting overridden by the mkdCode group
     " hi def link mdpythoncode SpecialComment
+
+    " github flavoured markdown (code blocks fenced with ```)
+    syntax region gfmpythoncode keepend start="^\s*\n^```python$" end=/^```$\n/ contains=@py
 endfunction
 
 map <leader>h :call HiPy ()<CR>
