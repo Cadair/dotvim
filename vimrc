@@ -252,12 +252,9 @@ nnoremap <leader>v V`]
 "http://stackoverflow.com/questions/501585
 :vnoremap <f3> :!python<CR>
 
-" http://vim.wikia.com/wiki/Quickly_adding_and_deleting_empty_lines 
-" Ctrl-Down/Up deletes blank line below/above, and Up/Down inserts. 
-nnoremap <silent><C-Down> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><C-Up> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><Up> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><Down> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+" Remind me to use vim-unimpaired
+nnoremap <silent><Up> :echo "Use [<Space> ! "<CR>
+nnoremap <silent><Down> :echo "Use ]<Space> !"<CR>
 
 "calculator
 inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
