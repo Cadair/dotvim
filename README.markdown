@@ -48,3 +48,19 @@ Remove a submodule:
 See [vimcasts][] for more info.
 
 [vimcasts]: http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+
+
+Compiling Vim:
+==============
+
+Works against EPD Canopy:
+
+    # vim git mirror
+    git clone git://github.com/b4winckler/vim.git
+    cd vim
+    ./configure --prefix=$HOME/.local \
+        --with-features=big \
+        --enable-pythoninterp=yes \
+        --with-python-config-dir="`python-config --prefix`/lib/python2.7/config"
+    make
+    make install
