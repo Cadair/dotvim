@@ -452,7 +452,7 @@ function! HiPy ()
     " hi def link mdpythoncode SpecialComment
 
     " github flavoured markdown (code blocks fenced with ```)
-    syntax region gfmpythoncode keepend start="^\s*\n^```python$" end=/^```$\n/ contains=@py
+    syntax region gfmpythoncode keepend start="^\s*\n^\s*```python.*$" end=/^\s*```$\n/ contains=@py
 endfunction
 
 map <leader>h :call HiPy ()<CR>
