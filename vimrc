@@ -299,7 +299,14 @@ let g:pymode_doc=0
 let g:pymode_run=0
 " I've compiled vim specifically for canopy so this should still work
 let g:pymode_virtualenv=0
-" TODO: some way of toggling lint error window
+" ignore from x import * and indentation
+let g:pymode_lint_ignore="W0401,E127"
+function! Toggle_lint_errors ()
+    " Switch off the signs column and close quickfix window
+    :sign unplace *
+    :cclose
+endfunction
+nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
 
 " IPython
 function! Start_IPython ()
