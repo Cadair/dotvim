@@ -88,6 +88,12 @@ nnoremap <leader>t :set tw=72<CR>
 " highlight column at 80 characters
 set cc=80
 
+" Shortcuts for clipboard
+" copy
+vnoremap <C-c> "+y
+" paste
+nnoremap <leader>p "+p
+
 " Save when losing focus
 au FocusLost * :wa
 
@@ -105,16 +111,18 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " COLOURS
 set background=dark
 
-" 256 colour zenburn
-" set t_Co=256
-" let g:zenburn_high_Contrast = 1
-" colorscheme zenburn
-
 " 16 colour Solarized - works properly this way with terminator and tmux.
 " let g:solarized_termcolors=256
-" make solarized use transparent background
-let g:solarized_termtrans=1
-colorscheme solarized
+" solarized at home
+if $HOME == '/home/aaron'
+    " make solarized use transparent background
+    let g:solarized_termtrans=1
+    colorscheme solarized
+" zenburn at work
+elseif $HOME == '/nfs/see-fs-02_users/eeaol'
+    let g:zenburn_high_Contrast = 1
+    colorscheme zenburn
+endif
 
 " Zenburn is great, but sometimes we need to switch to a higher
 " contrast scheme for light environments.
@@ -297,7 +305,14 @@ let g:pymode_doc=0
 let g:pymode_run=0
 " I've compiled vim specifically for canopy so this should still work
 let g:pymode_virtualenv=0
-" TODO: some way of toggling lint error window
+" ignore from x import * and indentation
+let g:pymode_lint_ignore="W0401,E127"
+function! Toggle_lint_errors ()
+    " Switch off the signs column and close quickfix window
+    :sign unplace *
+    :cclose
+endfunction
+nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
 
 " IPython
 function! Start_IPython ()
@@ -363,11 +378,11 @@ au FileType md set tw=68
 
 "Ctrl-P
 " need to ignore .git here rather than in wildignore else fugitive breaks.
-" let g:ctrlp_custom_ignore = '\.git$'
-" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 " max files
 let g:ctrlp_max_files = 10000
+" search within text
+let g:ctrlp_extensions = ['line']
 " faster file searching
 if has("unix")
     let g:ctrlp_user_command = {
@@ -379,6 +394,8 @@ if has("unix")
 endif
 " open new file in same window
 let g:ctrlp_open_new_file = 'r'
+" shortcut to buffer mode
+nnoremap <C-b> :CtrlPBuffer<CR>
 
 "Wildmenu
 "This is for command completion and alternative display
@@ -438,7 +455,7 @@ endfunction
 " Easiest to just do g<c-g> in command mode. 
 
 " Activate code block highlighting in a restructuredtext / md file
-" TODO: surely this can be extended to ctrl-p as well - to 
+" TODO: surely this can be extended to python-mode as well - to 
 " allow syntax highlighting of rst / md docstrings?
 function! HiPy ()
     let b:current_syntax=''
@@ -458,7 +475,7 @@ function! HiPy ()
     " hi def link mdpythoncode SpecialComment
 
     " github flavoured markdown (code blocks fenced with ```)
-    syntax region gfmpythoncode keepend start="^\s*\n^```python.*$" end=/^```$\n/ contains=@py
+    syntax region gfmpythoncode keepend start="^\s*\n^\s*```python.*$" end=/^\s*```$\n/ contains=@py
 endfunction
 
 map <leader>h :call HiPy ()<CR>

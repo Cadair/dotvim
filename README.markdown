@@ -53,14 +53,30 @@ See [vimcasts][] for more info.
 Compiling Vim:
 ==============
 
-Works against EPD Canopy:
+I want to compile against Enthought Canopy python. Canopy uses a
+virtualenv to contain itself. This virtualenv must be activated
+before compiling, e.g.
+
+    source /path/to/canopy/Enthought/Canopy_64bit/User/bin/activate
+
+Then we compile. `python-config` is convenient but not essential:
+you can just use whatever the path to the python install is instead.
 
     # vim git mirror
     git clone git://github.com/b4winckler/vim.git
     cd vim
+    PREFIX=`python-config --prefix`
+    PYTHON_CONFIG=$PREFIX/lib/python2.7/config
+    export vi_cv_path_python=$PREFIX/bin/python
     ./configure --prefix=$HOME/.local \
-        --with-features=big \
+        --with-features=huge \
         --enable-pythoninterp=yes \
-        --with-python-config-dir="`python-config --prefix`/lib/python2.7/config"
+        # CFLAGS="`python-config --cflags`" \
+        # LDFLAGS="-L$PYTHON_CONFIG"
     make
     make install
+
+and we need to alias vim to source the right libraries before
+starting:
+
+    alias vim='LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH} vim'

@@ -26,7 +26,6 @@
 	path = bundle/vim-markdown
 	url = git://github.com/ujihisa/vim-markdown.git
     ignore = dirty
-    ignore = dirty
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
@@ -54,6 +53,8 @@
 [submodule "bundle/vim-ipython"]
 	path = bundle/vim-ipython
 	url = https://github.com/ivanov/vim-ipython.git
+    ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+    ignore = dirty
