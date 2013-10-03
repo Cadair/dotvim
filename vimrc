@@ -19,7 +19,7 @@ set hidden
 let mapleader = ","
 " also use \ as leader
 nmap \ <leader>
-set grepprg=grep\ -nH\ $*
+set grepprg=ack
 
 "encoding utf-8
 set enc=utf-8
