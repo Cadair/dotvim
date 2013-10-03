@@ -50,6 +50,12 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+" Remap H and L to page up / down
+nnoremap H <PageUp>
+vnoremap H <PageUp>
+nnoremap L <PageDown>
+vnoremap L <PageDown>
+
 " use the mouse for scrolling
 " set mouse=a
 set ttyfast
