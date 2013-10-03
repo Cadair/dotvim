@@ -82,6 +82,12 @@ nnoremap <leader>t :set tw=72<CR>
 " highlight column at 80 characters
 set cc=80
 
+" Shortcuts for clipboard
+" copy
+vnoremap <C-c> "+y
+" paste
+nnoremap <leader>p "+p
+
 " Save when losing focus
 au FocusLost * :wa
 
