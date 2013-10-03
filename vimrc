@@ -372,11 +372,11 @@ au FileType md set tw=68
 
 "Ctrl-P
 " need to ignore .git here rather than in wildignore else fugitive breaks.
-" let g:ctrlp_custom_ignore = '\.git$'
-" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 " max files
 let g:ctrlp_max_files = 10000
+" search within text
+let g:ctrlp_extensions = ['line']
 " faster file searching
 if has("unix")
     let g:ctrlp_user_command = {
@@ -388,6 +388,8 @@ if has("unix")
 endif
 " open new file in same window
 let g:ctrlp_open_new_file = 'r'
+" shortcut to buffer mode
+nnoremap <C-b> :CtrlPBuffer<CR>
 
 "Wildmenu
 "This is for command completion and alternative display
@@ -447,7 +449,7 @@ endfunction
 " Easiest to just do g<c-g> in command mode. 
 
 " Activate code block highlighting in a restructuredtext / md file
-" TODO: surely this can be extended to ctrl-p as well - to 
+" TODO: surely this can be extended to python-mode as well - to 
 " allow syntax highlighting of rst / md docstrings?
 function! HiPy ()
     let b:current_syntax=''
