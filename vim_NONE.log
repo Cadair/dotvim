@@ -1,0 +1,33 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.005  000.005: --- VIM STARTING ---
+000.116  000.111: Allocated generic buffers
+001.551  001.435: locale set
+001.575  000.024: GUI prepared
+001.578  000.003: clipboard setup
+001.587  000.009: window checked
+005.996  004.409: inits 1
+006.004  000.008: parsing arguments
+006.006  000.002: expanding arguments
+006.027  000.021: shell init
+007.476  001.449: xsmp init
+009.636  002.160: Termcap init
+009.675  000.039: inits 2
+009.830  000.155: init highlight
+009.831  000.001: sourcing vimrc file(s)
+010.584  000.753: inits 3
+013.681  003.097: setup clipboard
+013.692  000.011: setting raw mode
+013.701  000.009: start termcap
+013.717  000.016: clearing screen
+013.916  000.199: opening buffers
+013.918  000.002: BufEnter autocommands
+013.920  000.002: editing files in windows
+013.927  000.007: VimEnter autocommands
+013.929  000.002: before starting main loop
+016.130  002.201: first screen update
+016.133  000.003: --- VIM STARTED ---

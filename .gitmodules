@@ -58,3 +58,6 @@
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
     ignore = dirty
+[submodule "bundle/vim-gnupg"]
+	path = bundle/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg.git
