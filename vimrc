@@ -117,7 +117,7 @@ set background=dark
 if $HOME == '/home/aaron'
     " make solarized use transparent background
     let g:solarized_termtrans=1
-    colorscheme solarized
+    colorscheme zenburn
 " zenburn at work
 elseif $HOME == '/nfs/see-fs-02_users/eeaol'
     let g:zenburn_high_Contrast = 1
