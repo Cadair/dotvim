@@ -318,7 +318,7 @@ nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
 function! Start_IPython ()
     " Connect to existing kernel
     " TODO: start kernel if not exist?
-    source /home/aaron/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
+    source $HOME/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
     :IPython
     " completion using ipython
     " N.B. setl is local, i.e current buffer, use set for global
@@ -485,11 +485,11 @@ map <leader>h :call HiPy ()<CR>
 " search and select contents of fenced code blocks
 nnoremap <leader>f /\v(\_^```python\n)@<=(\_.{-})(\n`{3}\_$)@=<CR>v//e<CR> 
 " goto the start of the current fenced code block (see :help search)
-nnoremap [b :call search('\n```python', 'b')<CR> 
+nnoremap <leader>B :call search('\n```python', 'b')<CR> 
 " select current code block
 " TODO: use <leader> instead of ,
 " TODO: cancel highlighting
-nmap <leader>b [b,f
+nmap <leader>b ,B,f
 " (or could do [b0v/\n```)
 " send current code block to ipython
 nmap <leader>p ,b<C-s>
