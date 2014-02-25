@@ -318,6 +318,7 @@ nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
 function! Start_IPython ()
     " Connect to existing kernel
     " TODO: start kernel if not exist?
+    source /home/aaron/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
     :IPython
     " completion using ipython
     " N.B. setl is local, i.e current buffer, use set for global
@@ -479,6 +480,19 @@ function! HiPy ()
 endfunction
 
 map <leader>h :call HiPy ()<CR>
+
+" Very useful mappings to be used with markdown and ipython
+" search and select contents of fenced code blocks
+nnoremap <leader>f /\v(\_^```python\n)@<=(\_.{-})(\n`{3}\_$)@=<CR>v//e<CR> 
+" goto the start of the current fenced code block (see :help search)
+nnoremap [b :call search('\n```python', 'b')<CR> 
+" select current code block
+" TODO: use <leader> instead of ,
+" TODO: cancel highlighting
+nmap <leader>b [b,f
+" (or could do [b0v/\n```)
+" send current code block to ipython
+nmap <leader>p ,b<C-s>
 
 " c++ intro course
 au FileType cpp set tabstop=2
