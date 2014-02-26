@@ -384,17 +384,26 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_max_files = 10000
 " search within text
 let g:ctrlp_extensions = ['line']
-" faster file searching
 if has("unix")
-    let g:ctrlp_user_command = {
-        \    'types': {
-        \        1: ['.git/', 'cd %s && git ls-files']
-        \    },
-        \    'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-        \ }
+    if executable('ag')
+    " faster file searching using ag
+        " disable caching
+        let g:ctrlp_use_caching = 0
+        let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+    else
+        " fall back to git ls-files and then to find
+        let g:ctrlp_user_command = {
+            \    'types': {
+            \        1: ['.git/', 'cd %s && git ls-files . --cached --exclude-standard --others']
+            \    },
+            \    'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+            \ }
+    endif
 endif
 " open new file in same window
 let g:ctrlp_open_new_file = 'r'
+" open same file in new window
+let g:ctrlp_switch_buffer = 0
 " shortcut to buffer mode
 nnoremap <C-b> :CtrlPBuffer<CR>
 
