@@ -501,7 +501,7 @@ nnoremap <leader>B :call search('\n```python', 'b')<CR>
 nmap <leader>b ,B,f
 " (or could do [b0v/\n```)
 " send current code block to ipython
-nmap <leader>p ,b<C-s>
+nmap <leader>p ,b<C-s>,.
 
 " c++ intro course
 au FileType cpp set tabstop=2
