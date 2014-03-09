@@ -92,7 +92,7 @@ set cc=80
 " copy
 vnoremap <C-c> "+y
 " paste
-nnoremap <leader>p "+p
+nnoremap <C-P> "+p
 
 " Save when losing focus
 au FocusLost * :wa
