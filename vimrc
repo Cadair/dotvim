@@ -485,7 +485,13 @@ function! HiPy ()
     " hi def link mdpythoncode SpecialComment
 
     " github flavoured markdown (code blocks fenced with ```)
-    syntax region gfmpythoncode keepend start="^\s*\n^\s*```py.*$" end=/^\s*```$\n/ contains=@py
+    syntax region gfmpythoncode keepend start="^```py.*$" end=/^\s*```$\n/ contains=@py
+
+    " also highlight the maths
+    syntax include @py syntax/tex.vim
+    syn region texdisplaymaths start="\$\$" end="\$\$" skip="\\\$" contains=@texMathZoneGroup
+    syn region texinlinemaths matchgroup=mkdMath start="\(\$\)\@<!\&\(\\\)\@<!\$\(\$\)\@!" end="\(\$\)\@<!\$" skip="\\\$" contains=@texMathZoneGroup 
+
 endfunction
 
 map <leader>h :call HiPy ()<CR>
