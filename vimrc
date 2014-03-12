@@ -312,6 +312,7 @@ let g:pymode_virtualenv=1
 " ignore from x import * and indentation
 let g:pymode_lint_ignore="W0401,E127"
 let g:pymode_rope_vim_completion=0  " use jedi-vim for completion
+let g:pymode_rope=0
 
 map <Leader>rgd :call RopeGotoDefinition()<CR>
 map <Leader>pl :PyLint<CR>
