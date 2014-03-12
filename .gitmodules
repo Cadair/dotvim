@@ -63,3 +63,6 @@
 [submodule "bundle/goyo"]
 	path = bundle/goyo
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule "bundle/lite-dfm"]
+	path = bundle/lite-dfm
+	url = https://github.com/bilalq/lite-dfm.git
