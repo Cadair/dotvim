@@ -72,3 +72,6 @@
 [submodule "bundle/jedi-vim"]
 	path = bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/vim-scratch"]
+	path = bundle/vim-scratch
+	url = https://github.com/duff/vim-scratch.git
