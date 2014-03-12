@@ -141,7 +141,7 @@ nnoremap <leader>zb :call Zenburn_Toggle ()<CR>
 nnoremap <F8> :call Zenburn_Toggle ()<CR>
 inoremap <F8> <c-o>:call Zenburn_Toggle ()<CR>
 " And for something different
-nnoremap <leader>bw :colorscheme badwolf<CR> 
+nnoremap <leader>bw :colorscheme badwolf<CR>
 
 " TABS
 " Mostly to make python look nice
@@ -165,7 +165,7 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
 
-" FUGITIVE 
+" FUGITIVE
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gp :Git add -p<CR>
 nnoremap <leader>gc :Gcommit<CR>
@@ -185,7 +185,7 @@ set laststatus=2
 set statusline=
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 " fugitive
-set statusline+=%{fugitive#statusline()}  
+set statusline+=%{fugitive#statusline()}
 " syntastic
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -261,7 +261,7 @@ nmap <silent> <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>v V`]
 
 "AMAZING!!! evaluation of python code. write the code, visually select and
-"press f3 and the code will be turned into its output. changing python for 
+"press f3 and the code will be turned into its output. changing python for
 "e.g. bash will allow its output to be easily inserted into the file.
 "http://stackoverflow.com/questions/501585
 :vnoremap <f3> :!python<CR>
@@ -289,9 +289,9 @@ nnoremap <F5> :GundoToggle<CR>
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-" PYTHON 
+" PYTHON
 " tab completion
-" this maps the omnifunc completion (which is mapped to supertab) to the 
+" this maps the omnifunc completion (which is mapped to supertab) to the
 " pythoncomplete script (comes with vim)
 " au FileType python set omnifunc=pythoncomplete#Complete
 " automatically wrap comments to 68 characters
@@ -299,20 +299,49 @@ au FileType python set tw=68
 au FileType python set formatoptions=cqb
 
 " PYTHON MODE
+" Used with Jedi for autocompletion
+" see https://github.com/davidhalter/jedi-vim/issues/196
 " turn off doc window
 let g:pymode_doc=0
 " turn off code running
 let g:pymode_run=0
-" I've compiled vim specifically for canopy so this should still work
-let g:pymode_virtualenv=0
+" Fix python paths to use virtualenvs
+" for this to work with canopy I had to copy activate_this.py into
+" canopy/User/bin/ from an existing virtualenv/bin
+let g:pymode_virtualenv=1
 " ignore from x import * and indentation
 let g:pymode_lint_ignore="W0401,E127"
+let g:pymode_rope_vim_completion=0  " use jedi-vim for completion
+
+map <Leader>rgd :call RopeGotoDefinition()<CR>
+map <Leader>pl :PyLint<CR>
+let ropevim_enable_shortcuts=1
+let g:pymode_rope_goto_def_newwin="vnew"
+let g:pymode_rope_extended_complete=1
+let g:pymode_syntax=1
+let g:pymode_syntax_builtin_objs=0
+let g:pymode_syntax_builtin_funcs=0
+let g:pymode_lint_ignore = "C0110 Exported"  " ignore pep257 missing docstring warning
+let g:pymode_lint_minheight = 5   " Minimal height of pylint error window
+let g:pymode_lint_maxheight = 15  " Maximal height of pylint error window
+let g:pymode_lint_write = 0  " Disable pylint checking every save
+let g:pymode_run_key = "<leader>run"  " default key conflicts with jedi-vim
+let g:pymode_lint_mccabe_complexity = 10
+let g:pymode_lint_checker="pyflakes,pep8,pep257,mccabe"
+let g:pymode_syntax_highlight_self=0  " do not highlight self
+let g:pymode_rope_guess_project=0
+let g:pymode_doc_key="<leader>k"  " used jedi-vim for help
+
 function! Toggle_lint_errors ()
     " Switch off the signs column and close quickfix window
     :sign unplace *
     :cclose
 endfunction
 nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
+
+" Jedi python autocompletion
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "right"
 
 " IPython
 function! Start_IPython ()
@@ -445,27 +474,27 @@ augroup END
 map <leader>u :!urlview % <CR>
 
 " Live word count
-" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim 
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
 function! WordCount()
     let s:old_status = v:statusmsg
-    let position = getpos(".")    
+    let position = getpos(".")
     exe ":silent normal g\<c-g>"
     let stat = v:statusmsg
-    let s:word_count = 0 
+    let s:word_count = 0
     if stat != '--No lines in buffer--'
         let s:word_count = str2nr(split(v:statusmsg)[11])
         let v:statusmsg = s:old_status
     end
-    call setpos('.', position) 
+    call setpos('.', position)
     return s:word_count
 endfunction
 :set statusline+=\ wc:%{WordCount()}
 " This seems to break basic typing. The first character is pushed ahead of
-" the rest! now modified to fix this - see Daak in SO thread. 
-" Easiest to just do g<c-g> in command mode. 
+" the rest! now modified to fix this - see Daak in SO thread.
+" Easiest to just do g<c-g> in command mode.
 
 " Activate code block highlighting in a restructuredtext / md file
-" TODO: surely this can be extended to python-mode as well - to 
+" TODO: surely this can be extended to python-mode as well - to
 " allow syntax highlighting of rst / md docstrings?
 function! HiPy ()
     let b:current_syntax=''
@@ -475,12 +504,12 @@ function! HiPy ()
     syntax region rstpythoncode start=/\.\. python::/ end=/^$\n^\(\s\{4,}\)\@!/ contains=@py
     " code blocks are indented by 4 spaces and started with a newline followed
     " by :::python in markdown. the start string has to include the line
-    " before as this is what mkdCode does, and the match / region that 
+    " before as this is what mkdCode does, and the match / region that
     " starts first has priority. when they both start in the same place the
     " item defined last takes priority
     " they end when there is an empty newline followed by a non-indented line
     syntax region mdpythoncode start="^\s*\n\s\{4,}:::python" end=/^$\n^\(\s\{4,}\)\@!/ contains=@py
-    " start="^\s*:::python" 
+    " start="^\s*:::python"
     " the markdown one keeps getting overridden by the mkdCode group
     " hi def link mdpythoncode SpecialComment
 
@@ -490,7 +519,7 @@ function! HiPy ()
     " also highlight the maths
     syntax include @py syntax/tex.vim
     syn region texdisplaymaths start="\$\$" end="\$\$" skip="\\\$" contains=@texMathZoneGroup
-    syn region texinlinemaths matchgroup=mkdMath start="\(\$\)\@<!\&\(\\\)\@<!\$\(\$\)\@!" end="\(\$\)\@<!\$" skip="\\\$" contains=@texMathZoneGroup 
+    syn region texinlinemaths matchgroup=mkdMath start="\(\$\)\@<!\&\(\\\)\@<!\$\(\$\)\@!" end="\(\$\)\@<!\$" skip="\\\$" contains=@texMathZoneGroup
 
 endfunction
 
@@ -498,9 +527,9 @@ map <leader>h :call HiPy ()<CR>
 
 " Very useful mappings to be used with markdown and ipython
 " search and select contents of fenced code blocks
-nnoremap <leader>f /\v(\_^```python\n)@<=(\_.{-})(\n`{3}\_$)@=<CR>v//e<CR> 
+nnoremap <leader>f /\v(\_^```python\n)@<=(\_.{-})(\n`{3}\_$)@=<CR>v//e<CR>
 " goto the start of the current fenced code block (see :help search)
-nnoremap <leader>B :call search('\n```python', 'b')<CR> 
+nnoremap <leader>B :call search('\n```python', 'b')<CR>
 " select current code block
 " TODO: use <leader> instead of ,
 " TODO: cancel highlighting
