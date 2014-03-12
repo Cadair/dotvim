@@ -1,30 +1,30 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
     ignore = dirty
 [submodule "bundle/vim-git"]
 	path = bundle/vim-git
-	url = http://github.com/tpope/vim-git.git
+	url = https://github.com/tpope/vim-git.git
     ignore = dirty
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
-	url = http://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
     ignore = dirty
 [submodule "bundle/tasklist"]
 	path = bundle/tasklist
-	url = http://github.com/vim-scripts/TaskList.vim.git
+	url = https://github.com/vim-scripts/TaskList.vim.git
     ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = http://github.com/scrooloose/nerdcommenter.git
+	url = https://github.com/scrooloose/nerdcommenter.git
     ignore = dirty
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+	url = https://github.com/kien/ctrlp.vim.git
     ignore = dirty
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
-	url = git://github.com/sjl/gundo.vim.git
+	url = https://github.com/sjl/gundo.vim.git
     ignore = dirty
 [submodule "bundle/vim-multimarkdown"]
 	path = bundle/vim-multimarkdown
@@ -32,19 +32,19 @@
     ignore = dirty
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
     ignore = dirty
 [submodule "bundle/vim-python-mode"]
 	path = bundle/vim-python-mode
-	url = git://github.com/klen/python-mode.git
+	url = https://github.com/klen/python-mode.git
     ignore = dirty
 [submodule "bundle/gitv"]
 	path = bundle/gitv
-	url = git://github.com/vim-scripts/gitv.git
+	url = https://github.com/vim-scripts/gitv.git
     ignore = dirty
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
     ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
