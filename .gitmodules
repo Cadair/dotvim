@@ -22,10 +22,6 @@
 	path = bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
     ignore = dirty
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
-	url = git://github.com/ujihisa/vim-markdown.git
-    ignore = dirty
 [submodule "bundle/gundo.vim"]
 	path = bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
@@ -57,12 +53,19 @@
 [submodule "bundle/vim-gnupg"]
 	path = bundle/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg.git
+    ignore = dirty
 [submodule "bundle/vim-ipython"]
 	path = bundle/vim-ipython
 	url = https://github.com/ivanov/vim-ipython.git
+    ignore = dirty
 [submodule "bundle/goyo"]
 	path = bundle/goyo
 	url = https://github.com/junegunn/goyo.vim.git
+    ignore = dirty
 [submodule "bundle/lite-dfm"]
 	path = bundle/lite-dfm
 	url = https://github.com/bilalq/lite-dfm.git
+    ignore = dirty
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
