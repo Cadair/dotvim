@@ -3,9 +3,10 @@
 "http://stevelosh.com/blog/2010/09/coming-home-to-vim
 
 "pathogen
-" disable python mode if vim version less than 7.3
-if v:version < 703
-    let g:pathogen_disabled = ['vim-python-mode']
+" disable python mode if vim version less than 7.3 or
+" we didn't compile with python
+if v:version < 703 || !has('python')
+    let g:pathogen_disabled = ['vim-python-mode', 'jedi-vim']
 endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
