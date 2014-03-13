@@ -53,30 +53,15 @@ See [vimcasts][] for more info.
 Compiling Vim:
 ==============
 
-I want to compile against Enthought Canopy python. Canopy uses a
-virtualenv to contain itself. This virtualenv must be activated
-before compiling, e.g.
+Use `install`, in this repo. A good number of my plugins are
+dependent on python, which requires vim compiled against whichever
+python you are using. You can compile vim against the system
+python or against an Enthought Canopy install.
 
-    source /path/to/canopy/Enthought/Canopy_64bit/User/bin/activate
+Any time you aren't using the system python, e.g. with a canopy
+python, you need to let vim use the canopy libraries. Alias vim to
+something like this:
 
-Then we compile. `python-config` is convenient but not essential:
-you can just use whatever the path to the python install is instead.
+    alias vim='LD_LIBRARY_PATH=$HOME/src/canopy/appdata/lib:${LD_LIBRARY_PATH} vim'
 
-    # vim git mirror
-    git clone git://github.com/b4winckler/vim.git
-    cd vim
-    PREFIX=`python-config --prefix`
-    PYTHON_CONFIG=$PREFIX/lib/python2.7/config
-    export vi_cv_path_python=$PREFIX/bin/python
-    ./configure --prefix=$HOME/.local \
-        --with-features=huge \
-        --enable-pythoninterp=yes \
-        # CFLAGS="`python-config --cflags`" \
-        # LDFLAGS="-L$PYTHON_CONFIG"
-    make
-    make install
-
-and we need to alias vim to source the right libraries before
-starting:
-
-    alias vim='LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH} vim'
+A wrapper function that chooses the right alias can be seen in my bashrc.

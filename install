@@ -1,0 +1,86 @@
+#!/bin/bash
+
+install_vim () {
+    # Install a regular vim compiled against the system python.
+    cd ~
+    mkdir -p src
+    cd src
+    if type git > /dev/null; then
+        git clone https://github.com/b4winckler/vim.git vim
+    elif ! type git > /dev/null; then
+        wget -q -0 - ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2 | tar xvjf -
+    fi
+    cd vim
+    # Necessary libs
+    sudo apt-get install libncurses5-dev
+    # Install
+    ./configure --prefix=$HOME/.local \
+        --with-features=big \
+        --enable-pythoninterp=yes \
+        # --with-python-config-dir="`python-config --prefix`/lib/python2.7/config" \
+        # CFLAGS="`python-config --includes`" \
+        # LDFLAGS="`python-config --ldflags" \
+        # LIBS="`python-config --libs`"
+    make
+    make install
+}
+
+install_vim_canopy () {
+    # It looks like a virtualenv, it acts like a virtualenv, but
+    # CANOPY IS NOT A NORMAL VIRTUALENV. It has its own python binary
+    # that does not derive from the system python. If you want vim to
+    # use the canopy python interpreter you *have* to compile against
+    # it, which is what this does.
+
+    # * YOU HAVE TO HAVE CANOPY ACTIVATED, i.e. `which python` points to canopy
+    # * you need python-config
+    # (assumes you own your canopy install dir)
+
+    # vim then needs to be aliased to include the canopy libraries.
+    # here's an excerpt from my bashrc:
+    # APPDATA_ROOT="$HOME/src/canopy/appdata/"
+    # # find the most recent canopy install
+    # APPDATA=$(ls -dt1 ${APPDATA_ROOT}canopy-1* | head -n1)
+    # # echo "LD_LIBRARY_PATH="$APPDATA/lib:${LD_LIBRARY_PATH}" command "$@""
+    # LD_LIBRARY_PATH="$APPDATA/lib:${LD_LIBRARY_PATH}" vim "$@"
+
+    # assume we've already cloned the source to here
+    cd ~/src/vim
+
+    # get rid of any cached bits from previous builds
+    make distclean
+
+    # e.g. APPDATA=$HOME/src/canopy/appdata/canopy-1.0.3.1262.rh5-x86_64
+    APPDATA_ROOT="$HOME/src/canopy/appdata/"
+    # find the most recent canopy install
+    APPDATA=$(ls -dt1 ${APPDATA_ROOT}canopy-1* | head -n1)
+
+    PYTHON_CONFIG=$APPDATA/lib/python2.7/config
+    # force vim to use this python binary
+    export vi_cv_path_python=$APPDATA/bin/python
+
+    # python-config should pick up the canopy User directory which is where
+    # we'll install to. You could put it anywhere though.
+    ./configure --prefix=`python-config --prefix` \
+        --with-features=big \
+        --enable-pythoninterp=yes \
+        --with-python-config-dir=$PYTHON_CONFIG
+        # CFLAGS="`python-config --includes`" \
+        # LDFLAGS="-L $PYTHON_CONFIG" \
+        # LIBS="`python-config --libs`"
+    make
+    make install
+}
+
+
+if [[ $1 = "canopy" ]]; then
+    echo "compiling vim against canopy python"
+    install_vim_canopy
+elif [[ $# -eq 0 ]]; then
+    echo "compiling vim against system python"
+    install_vim
+else
+    echo "usage:"
+    echo "./install - compile against system python"
+    echo "./install canopy - compile against canopy python"
+fi
