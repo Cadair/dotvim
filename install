@@ -62,7 +62,7 @@ install_vim_canopy () {
     # python-config should pick up the canopy User directory which is where
     # we'll install to. You could put it anywhere though.
     ./configure --prefix=`python-config --prefix` \
-        --with-features=big \
+        --with-features=huge \
         --enable-pythoninterp=yes \
         --with-python-config-dir=$PYTHON_CONFIG
         # CFLAGS="`python-config --includes`" \
