@@ -300,9 +300,17 @@ let g:SuperTabLongestEnhanced=1
 au FileType python set tw=68
 au FileType python set formatoptions=cqb
 
+" JEDI (python autocomplete)
+" turn off function argument display. This slows down text insertion when
+" enabled. see https://github.com/davidhalter/jedi-vim/issues/217
+let g:jedi#show_call_signatures = "0"
+
 " PYTHON MODE
 " Used with Jedi for autocompletion
 " see https://github.com/davidhalter/jedi-vim/issues/196
+let g:pymode_rope_vim_completion=0  " use jedi-vim for completion
+let g:pymode_run_key = "<leader>run"  " default key conflicts with jedi-vim
+let g:pymode_doc_key="<leader>k"  " used jedi-vim for help
 " turn off doc window
 let g:pymode_doc=0
 " turn off code running
@@ -313,7 +321,6 @@ let g:pymode_run=0
 let g:pymode_virtualenv=1
 " ignore from x import * and indentation
 let g:pymode_lint_ignore="W0401,E127"
-let g:pymode_rope_vim_completion=0  " use jedi-vim for completion
 let g:pymode_rope=0
 
 map <Leader>rgd :call RopeGotoDefinition()<CR>
@@ -327,13 +334,11 @@ let g:pymode_syntax_builtin_funcs=0
 let g:pymode_lint_ignore = "C0110 Exported"  " ignore pep257 missing docstring warning
 let g:pymode_lint_minheight = 5   " Minimal height of pylint error window
 let g:pymode_lint_maxheight = 15  " Maximal height of pylint error window
-let g:pymode_lint_write = 0  " Disable pylint checking every save
-let g:pymode_run_key = "<leader>run"  " default key conflicts with jedi-vim
+let g:pymode_lint_write = 1  " Disable pylint checking every save
 let g:pymode_lint_mccabe_complexity = 10
 let g:pymode_lint_checker="pyflakes,pep8,pep257,mccabe"
 let g:pymode_syntax_highlight_self=0  " do not highlight self
 let g:pymode_rope_guess_project=0
-let g:pymode_doc_key="<leader>k"  " used jedi-vim for help
 
 function! Toggle_lint_errors ()
     " Switch off the signs column and close quickfix window
