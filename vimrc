@@ -382,8 +382,6 @@ let NERDSpaceDelims = 1
 " /NERDCommenter
 
 "Markdown
-"interpret .md as markdown rather than modula
-autocmd! filetypedetect BufNewFile,BufRead *.md setfiletype markdown
 "Add headings
 nnoremap <buffer> <leader>1 yypVr=
 nnoremap <buffer> <leader>2 yypVr-
