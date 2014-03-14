@@ -289,6 +289,7 @@ nnoremap <F5> :GundoToggle<CR>
 "hit <leader>pw for pydoc on a function
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+let g:SuperTabLongestEnhanced=1
 
 " PYTHON
 " tab completion
