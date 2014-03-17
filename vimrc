@@ -344,9 +344,9 @@ let g:pymode_syntax_highlight_self=0  " do not highlight self
 let g:pymode_rope_guess_project=0
 
 function! Toggle_lint_errors ()
-    " Switch off the signs column and close quickfix window
+    " Switch off the signs column and close location window
     :sign unplace *
-    :cclose
+    :lclose
 endfunction
 nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
 
