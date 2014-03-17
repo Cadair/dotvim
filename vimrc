@@ -304,6 +304,9 @@ au FileType python set formatoptions=cqb
 " turn off function argument display. This slows down text insertion when
 " enabled. see https://github.com/davidhalter/jedi-vim/issues/217
 let g:jedi#show_call_signatures = "0"
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "right"
 
 " PYTHON MODE
 " Used with Jedi for autocompletion
@@ -346,10 +349,6 @@ function! Toggle_lint_errors ()
     :cclose
 endfunction
 nnoremap <leader>q :silent call Toggle_lint_errors()<CR>
-
-" Jedi python autocompletion
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#use_splits_not_buffers = "right"
 
 " IPython
 function! Start_IPython ()
