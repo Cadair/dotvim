@@ -334,7 +334,6 @@ let g:pymode_rope_extended_complete=1
 let g:pymode_syntax=1
 let g:pymode_syntax_builtin_objs=0
 let g:pymode_syntax_builtin_funcs=0
-let g:pymode_lint_ignore = "C0110 Exported"  " ignore pep257 missing docstring warning
 let g:pymode_lint_minheight = 5   " Minimal height of pylint error window
 let g:pymode_lint_maxheight = 15  " Maximal height of pylint error window
 let g:pymode_lint_write = 1  " Disable pylint checking every save
