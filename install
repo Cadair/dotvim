@@ -17,6 +17,7 @@ install_vim () {
     ./configure --prefix=$HOME/.local \
         --with-features=big \
         --enable-pythoninterp=yes \
+        --enable-gui
         # --with-python-config-dir="`python-config --prefix`/lib/python2.7/config" \
         # CFLAGS="`python-config --includes`" \
         # LDFLAGS="`python-config --ldflags" \
@@ -64,7 +65,8 @@ install_vim_canopy () {
     ./configure --prefix=`python-config --prefix` \
         --with-features=huge \
         --enable-pythoninterp=yes \
-        --with-python-config-dir=$PYTHON_CONFIG
+        --with-python-config-dir=$PYTHON_CONFIG \
+        --enable-gui
         # CFLAGS="`python-config --includes`" \
         # LDFLAGS="-L $PYTHON_CONFIG" \
         # LIBS="`python-config --libs`"
