@@ -522,10 +522,9 @@ function! HiPy ()
     syntax region gfmpythoncode keepend start="^```py.*$" end=/^\s*```$\n/ contains=@py
 
     " also highlight the maths
-    syntax include @py syntax/tex.vim
+    syntax include @tex syntax/tex.vim
     syn region texdisplaymaths start="\$\$" end="\$\$" skip="\\\$" contains=@texMathZoneGroup
     syn region texinlinemaths matchgroup=mkdMath start="\(\$\)\@<!\&\(\\\)\@<!\$\(\$\)\@!" end="\(\$\)\@<!\$" skip="\\\$" contains=@texMathZoneGroup
-
 endfunction
 
 map <leader>h :call HiPy ()<CR>
