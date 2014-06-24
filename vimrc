@@ -401,6 +401,10 @@ nnoremap <leader>md <C-w><C-v><C-l>:e ~/writing/notes/multimarkdown_for_scientif
 " mmd natbib ref
 nnoremap <leader>nb <C-w><C-v><C-l>:e ~/writing/mmd-natbib-ref<CR>
 
+" code highlighting (using tpopes vim-markdown)
+" TODO: makes HiPy redundant
+let g:markdown_fenced_languages = ['python']
+
 au FileType markdown set tw=68
 au FileType mmd set tw=68
 au FileType mkd set tw=68
