@@ -74,10 +74,37 @@ install_vim_canopy () {
     make install
 }
 
+install_vim_anaconda () {
+    cd ~/src/vim
+
+    # get rid of any cached bits from previous builds
+    make distclean
+
+    PYTHON_CONFIG=$HOME/src/anaconda/lib/python2.7/config
+    # force vim to use this python binary
+    # export vi_cv_path_python=$APPDATA/bin/python
+
+    # python-config should pick up the canopy User directory which is where
+    # we'll install to. You could put it anywhere though.
+    ./configure --prefix=`python-config --prefix` \
+        --with-features=huge \
+        --enable-pythoninterp=yes \
+        --with-python-config-dir=$PYTHON_CONFIG \
+        --enable-gui \
+        CFLAGS="`python-config --includes`" \
+        LDFLAGS="-L $PYTHON_CONFIG" \
+        LIBS="`python-config --libs`"
+    make
+    make install
+}
+
 
 if [[ $1 = "canopy" ]]; then
     echo "compiling vim against canopy python"
     install_vim_canopy
+elif [[ $1 = "conda" ]]; then
+    echo "compiling vim against anaconda python"
+    install_vim_anaconda
 elif [[ $# -eq 0 ]]; then
     echo "compiling vim against system python"
     install_vim
