@@ -312,7 +312,7 @@ let g:jedi#usages_command = "<leader>u"
 " PYTHON MODE
 " Used with Jedi for autocompletion
 " see https://github.com/davidhalter/jedi-vim/issues/196
-let g:pymode_rope_vim_completion=0  " use jedi-vim for completion
+let g:pymode_rope_vim_completion=0  " no, use jedi-vim for completion
 let g:pymode_run_key = "<leader>run"  " default key conflicts with jedi-vim
 let g:pymode_doc_key="<leader>k"  " used jedi-vim for help
 " turn off doc window
