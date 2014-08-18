@@ -89,6 +89,9 @@ nnoremap <leader>t :set tw=72<CR>
 " highlight column at 80 characters
 set cc=80
 
+" No gui options (removes menu, tool and scroll bars)
+set guioptions=
+
 " Shortcuts for clipboard
 " copy
 vnoremap <C-c> "+y
