@@ -28,8 +28,15 @@ set fileencoding=utf-8
 
 " Backups {{{
 "set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=$HOME/.vim/tmp/backup// " backups
-set directory=$HOME/.vim/tmp/swap//   " swap files
+" windows needs to use ~/vimfiles or pathogen breaks. Detect which os we are
+" using and select tmp dir accordingly
+if has('unix')
+    set backupdir=$HOME/.vim/tmp/backup// " backups
+    set directory=$HOME/.vim/tmp/swap//   " swap files
+else
+    set backupdir=$HOME/vimfiles/tmp/backup// " backups
+    set directory=$HOME/vimfiles/tmp/swap//   " swap files
+endif
 set backup                        " enable backups
 set noswapfile                    " It's 2012, Vim.
 " Make Vim able to edit crontab files again.
