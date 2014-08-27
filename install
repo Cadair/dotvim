@@ -11,6 +11,7 @@ install_vim () {
         wget -q -0 - ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2 | tar xvjf -
     fi
     cd vim
+    make distclean
     # Necessary libs
     sudo apt-get install libncurses5-dev
     # Install
@@ -112,4 +113,5 @@ else
     echo "usage:"
     echo "./install - compile against system python"
     echo "./install canopy - compile against canopy python"
+    echo "./install conda - compile against anaconda python"
 fi
