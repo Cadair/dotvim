@@ -560,3 +560,8 @@ nmap <leader>p ,b<C-s>,.
 au FileType cpp set tabstop=2
 au FileType cpp set shiftwidth=2
 au FileType cpp set softtabstop=2
+
+" Pytest
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
