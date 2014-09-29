@@ -81,3 +81,9 @@
 [submodule "bundle/pytest.vim"]
 	path = bundle/pytest.vim
 	url = git@github.com:alfredodeza/pytest.vim.git
+[submodule "bundle/riv"]
+	path = bundle/riv
+	url = git@github.com:Rykka/riv.vim.git
+[submodule "bundle/InstantRst"]
+	path = bundle/InstantRst
+	url = git@github.com:Rykka/InstantRst.git

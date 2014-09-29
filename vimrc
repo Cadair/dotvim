@@ -49,20 +49,20 @@ inoremap <C-j> <ESC>
 nnoremap ; :
 "Disable the arrow keys
 "see jeetworks.org/node/89
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
+"inoremap  <Up>     <NOP>
+"inoremap  <Down>   <NOP>
+"inoremap  <Left>   <NOP>
+"inoremap  <Right>  <NOP>
+"noremap   <Up>     <NOP>
+"noremap   <Down>   <NOP>
+"noremap   <Left>   <NOP>
+"noremap   <Right>  <NOP>
 
 " Remap H and L to page up / down
-nnoremap H <PageUp>
-vnoremap H <PageUp>
-nnoremap L <PageDown>
-vnoremap L <PageDown>
+nnoremap K <PageUp>
+vnoremap K <PageUp>
+nnoremap J <PageDown>
+vnoremap J <PageDown>
 
 " use the mouse for scrolling
 " set mouse=a
@@ -278,8 +278,8 @@ nnoremap <leader>v V`]
 :vnoremap <f3> :!python<CR>
 
 " Remind me to use vim-unimpaired
-nnoremap <silent><Up> :echo "Use [<Space> ! "<CR>
-nnoremap <silent><Down> :echo "Use ]<Space> !"<CR>
+nnoremap <silent><Up> :echo "Use k<Space> ! "<CR>
+nnoremap <silent><Down> :echo "Use j<Space> !"<CR>
 
 "calculator
 inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
